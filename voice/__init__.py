@@ -15,8 +15,6 @@ def call(config):
         application_id=APPLICATION_ID,
         private_key=PRIVATE_KEY
     )
-    
-    print client
 
     response = client.create_call({
       'to': [{'type': 'phone', 'number': TO_NUMBER}],
