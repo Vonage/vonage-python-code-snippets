@@ -1,62 +1,27 @@
-import json
-import requests
 import os
-import calendar
-from datetime import datetime
-from base64 import urlsafe_b64encode
-from jose import jwt
-
-def generate_token(application_id, key) :
-    # Add the unix time at UCT + 0
-    d = datetime.utcnow()
-
-    token_payload = {
-        "iat": calendar.timegm(d.utctimetuple()),  # issued at
-        "application_id": application_id,
-        "jti": urlsafe_b64encode(os.urandom(64)).decode('utf-8')
-    }
-
-    # generate our token signed with the private key...
-    return jwt.encode(
-        claims=token_payload,
-        key=key,
-        algorithm='RS256')
+import nexmo
 
 def call(config):
-    # Create your JWT
-    private_key_file = open(config['PRIVATE_KEY_FILE'], 'r').read()
-    jwt = generate_token(config['VOICE_APP_ID'], private_key_file)
+    API_KEY = config['API_KEY']
+    API_SECRET = config['API_SECRET']
+    APPLICATION_ID = config['APPLICATION_ID']
+    PRIVATE_KEY = open(config['PRIVATE_KEY'], 'r').read()
+    TO_NUMBER = config['TO_NUMBER']
+    FROM_NUMBER = config['FROM_NUMBER']
     
-    print(jwt)
+    client = nexmo.Client(
+        key=API_KEY,
+        secret=API_SECRET,
+        application_id=APPLICATION_ID,
+        private_key=PRIVATE_KEY
+    )
     
-    #Set the endpoint
-    base_url = "https://api.nexmo.com"
-    version = "/beta"
-    action = "/calls"
+    print client
 
-    #Create the headers using the jwt
-    headers = {
-        "Content-type": "application/json",
-        "Authorization": "Bearer {0}".format(jwt)
-    }
+    response = client.create_call({
+      'to': [{'type': 'phone', 'number': TO_NUMBER}],
+      'from': {'type': 'phone', 'number': FROM_NUMBER},
+      'answer_url': ['https://nexmo-community.github.io/ncco-examples/first_call_talk.json']
+    })
 
-    #
-    payload = {
-        "to":[{
-            "type": "phone",
-            "number": config['TO_NUMBER']
-        }],
-        "from": {
-            "type": "phone",
-            "number": config['FROM_NUMBER']
-        },
-        "answer_url": ["https://nexmo-community.github.io/ncco-examples/conference.json"],
-        "event_url": ["https://voice.ngrok.io/events"]
-    }
-
-    response = requests.post( base_url + version + action , data=json.dumps(payload), headers=headers)
-
-    if (response.status_code == 201):
-        return response.content
-    else:
-        return "Error: " + str(response.status_code) + " " + response.content
+    return response
