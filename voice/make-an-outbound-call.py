@@ -5,17 +5,16 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), '../.env')
 load_dotenv(dotenv_path)
 
-APPLICATION_ID = os.environ.get('APPLICATION_ID')
-APPLICATION_PRIVATE_KEY_PATH = os.environ.get('APPLICATION_PRIVATE_KEY_PATH')
-TO_NUMBER = os.environ.get('TO_NUMBER')
-NEXMO_NUMBER = os.environ.get('NEXMO_NUMBER')
-APPLICATION_PRIVATE_KEY = open('private.key','r').read()
+APPLICATION_PRIVATE_KEY_PATH = os.getenv('APPLICATION_PRIVATE_KEY_PATH')
+APPLICATION_ID = os.getenv('APPLICATION_ID')
+TO_NUMBER = os.getenv('TO_NUMBER')
+NEXMO_NUMBER = os.getenv('NEXMO_NUMBER')
 
 import nexmo
 
 client = nexmo.Client(
     application_id=APPLICATION_ID,
-    private_key=APPLICATION_PRIVATE_KEY
+    private_key=APPLICATION_PRIVATE_KEY_PATH,
 )
 
 client.create_call({
