@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-
 import http
 from pprint import pprint
 
 from flask import Flask, request, jsonify
-
 
 app = Flask(__name__)
 
@@ -13,13 +11,11 @@ app = Flask(__name__)
 def answer_call():
     for param_key, param_value in request.args.items():
         print("{}: {}".format(param_key, param_value))
-
     recording_webhook_url = request.url_root + "webhooks/recording"
-
-    return jsonify([
+    ncco =[
         {
             "action": "talk",
-            "text": "Please leave a message after the tone, then press pound."
+            "text": "Please leave a message after the tone, then press the hash key."
         },
         {
             "action": "record",
@@ -32,6 +28,7 @@ def answer_call():
             "text": "Thank you for your message."
         }
     ])
+    return jsonify(ncco)
 
 
 @app.route("/webhooks/recording", methods=['POST'])
