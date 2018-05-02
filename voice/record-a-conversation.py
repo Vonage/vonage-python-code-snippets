@@ -9,12 +9,8 @@ app = Flask(__name__)
 def answer_call():
     ncco = [
         {
-            "action": "talk",
-            "text": "Hi, welcome to this Nexmo conference call. This call is recorded for quality assurance purposes."
-        },
-        {
             "action": "conversation",
-            "name": "nexmo-conference-standard",
+            "name": "CONF_NAME",
             "record": "true",
             "eventMethod": "POST",
             "eventUrl": ["https://demo.ngrok.io/webhooks/recordings"]
