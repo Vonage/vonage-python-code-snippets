@@ -13,11 +13,11 @@ def answer_call():
             "text": "Hi, welcome to this Nexmo conference call. This call is recorded for quality assurance purposes."
         },
         {
-        "action": "conversation",
-        "name": "nexmo-conference-standard",
-        "record": "true",
-        "eventMethod": "POST",
-        "eventUrl": ["https://demo.ngrok.io/webhooks/recordings"]
+            "action": "conversation",
+            "name": "nexmo-conference-standard",
+            "record": "true",
+            "eventMethod": "POST",
+            "eventUrl": ["https://demo.ngrok.io/webhooks/recordings"]
         }
     ]
     return jsonify(ncco)
@@ -27,7 +27,6 @@ def recordings():
     data = request.get_json()
     pprint(data)
     return ("200")
-
 
 if __name__ == '__main__':
     app.run(port=3000)
