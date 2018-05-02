@@ -31,9 +31,9 @@ def answer_call():
 
 @app.route("/webhooks/recordings", methods=['POST'])
 def recordings():
-
     data = request.get_json()
     pprint(data)
+    return ("200")
 
 if __name__ == '__main__':
     app.run(port=3000)
