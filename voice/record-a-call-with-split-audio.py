@@ -13,6 +13,7 @@ def answer_call():
         },
         {
             "action": "record",
+            "split" : "conversation",
             "eventUrl": ["https://demo.ngrok.io/webhooks/recordings"]
         },
         {
