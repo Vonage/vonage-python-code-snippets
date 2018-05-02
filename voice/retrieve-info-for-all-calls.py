@@ -8,8 +8,9 @@ client = nexmo.Client(
     private_key=APPLICATION_PRIVATE_KEY_PATH,
 )
 
-DATE_END = datetime.utcnow().replace(microsecond=0).isoformat()+"Z"
-DATE_START = (datetime.utcnow() - timedelta(hours=24, minutes=00)).replace(microsecond=0).isoformat()+"Z"
+NOW = datetime.utcnow()
+DATE_END = NOW.replace(microsecond=0).isoformat()+"Z"
+DATE_START = (NOW - timedelta(hours=24, minutes=00)).replace(microsecond=0).isoformat()+"Z"
 
 params = {"date_start": DATE_START, "date_end": DATE_END}
 response = client.get_calls(params)
