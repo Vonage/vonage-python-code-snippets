@@ -90,3 +90,5 @@ ENV/
 
 # nexmo key file
 private.key
+
+.DS_Store
