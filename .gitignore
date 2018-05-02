@@ -88,7 +88,8 @@ ENV/
 # Rope project settings
 .ropeproject
 
-# nexmo key file
+# nexmo key files
 private.key
+*.key
 
 .DS_Store
