@@ -34,7 +34,7 @@ def answer_call():
 def recordings():
     data = request.get_json()
     pprint(data)
-    return ("200")
+    return "Webhook received"
 
 if __name__ == '__main__':
     app.run(port=3000)

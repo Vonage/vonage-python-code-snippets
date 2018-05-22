@@ -12,8 +12,7 @@ NOW = datetime.utcnow()
 DATE_END = NOW.replace(microsecond=0).isoformat()+"Z"
 DATE_START = (NOW - timedelta(hours=24, minutes=00)).replace(microsecond=0).isoformat()+"Z"
 
-params = {"date_start": DATE_START, "date_end": DATE_END}
-response = client.get_calls(params)
+response = client.get_calls(date_start=DATE_START, date_end=DATE_END)
 calls = response['_embedded']['calls']
 for call in calls:
     pprint(call)

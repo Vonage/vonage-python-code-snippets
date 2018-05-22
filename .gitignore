@@ -89,7 +89,7 @@ ENV/
 .ropeproject
 
 # nexmo key files
-private.key
 *.key
 
 .DS_Store
+settings.json
