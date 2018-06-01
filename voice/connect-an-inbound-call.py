@@ -11,7 +11,7 @@ def answer_call():
             "from": "NEXMO_NUMBER",
             "endpoint": [{
                 "type": 'phone',
-                "number": "RECIPIENT_NUMBER"
+                "number": "YOUR_SECOND_NUMBER"
             }]
         }
     ]
