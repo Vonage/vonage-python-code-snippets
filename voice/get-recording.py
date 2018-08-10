@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import nexmo
-import time
 from pprint import pprint
 
 client = nexmo.Client(
