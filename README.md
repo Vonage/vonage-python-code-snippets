@@ -34,7 +34,7 @@ Navigate to the appropriate route defined in `server.py` to execute the example.
 
 ## Request an Example
 
-Please [raise and issue](https://github.com/nexmo-community/nexmo-python-quickstart/issues) to request an example that isn't present within the quickstart. Pull requests will be gratefully received.
+Please [raise an issue](https://github.com/nexmo-community/nexmo-python-quickstart/issues/new) to request an example that isn't present within the quickstart. Pull requests will be gratefully received.
 
 ## License
 
