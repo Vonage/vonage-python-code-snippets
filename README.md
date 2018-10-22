@@ -1,6 +1,6 @@
 # Nexmo Quickstart Examples for Python
 
-Quickstarts also available for: [Java](https://github.com/nexmo-community/nexmo-java-quickstart), [.NET](https://github.com/nexmo-community/nexmo-dotnet-quickstart), [Node.js](https://github.com/nexmo-community/nexmo-node-quickstart), [PHP](https://github.com/nexmo-community/nexmo-php-quickstart),  [Ruby](https://github.com/nexmo-community/nexmo-ruby-quickstart)
+Quickstarts also available for: [Java](https://github.com/nexmo-community/nexmo-java-quickstart), [.NET](https://github.com/nexmo-community/nexmo-dotnet-quickstart), [Node.js](https://github.com/nexmo-community/nexmo-node-quickstart), [PHP](https://github.com/nexmo-community/nexmo-php-quickstart),  [Ruby](https://github.com/nexmo-community/nexmo-ruby-quickstart) and [Android](https://github.com/nexmo-community/quickstart-android)
 
 The purpose of the Quickstart guide is to provide simple examples focused
 on one goal. For example, sending an SMS, handling an incoming SMS webhook,
