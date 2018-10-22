@@ -4,7 +4,7 @@ from pprint import pprint
 app = Flask(__name__)
 
 @app.route('/webhooks/delivery-receipt', methods=['GET', 'POST'])
-def inbound_sms():
+def delivery_receipt():
     if request.is_json:
         pprint(request.get_json())
     else:
