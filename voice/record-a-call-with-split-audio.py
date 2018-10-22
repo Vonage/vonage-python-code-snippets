@@ -4,6 +4,7 @@ from pprint import pprint
 
 app = Flask(__name__)
 
+
 @app.route("/webhooks/answer")
 def answer_call():
     ncco = [
@@ -13,7 +14,7 @@ def answer_call():
         },
         {
             "action": "record",
-            "split" : "conversation",
+            "split": "conversation",
             "eventUrl": ["https://demo.ngrok.io/webhooks/recordings"]
         },
         {
@@ -30,11 +31,13 @@ def answer_call():
     ]
     return jsonify(ncco)
 
+
 @app.route("/webhooks/recordings", methods=['POST'])
 def recordings():
     data = request.get_json()
     pprint(data)
     return "Webhook received"
+
 
 if __name__ == '__main__':
     app.run(port=3000)

@@ -27,14 +27,14 @@ def answer_call():
             "action": "talk",
             "text": "Thank you for your message."
         }
-    ])
+    ]
     return jsonify(ncco)
 
 
 @app.route("/webhooks/recording", methods=['POST'])
 def recording_webhook():
     pprint(request.get_json())
-    return ('', http.HTTPStatus.NO_CONTENT)
+    return '', http.HTTPStatus.NO_CONTENT
 
 
 if __name__ == '__main__':

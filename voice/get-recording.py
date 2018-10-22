@@ -9,4 +9,3 @@ client = nexmo.Client(
 
 response = client.get_recording(URL)
 pprint(response)
-

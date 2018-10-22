@@ -10,7 +10,7 @@ def answer_call():
     for param_key, param_value in request.args.items():
         print("{}: {}".format(param_key, param_value))
     input_webhook_url = request.url_root + "webhooks/dtmf"
-    ncco =[
+    ncco = [
         {
             "action": "talk",
             "text": "Hello, please press any key to continue."
@@ -24,12 +24,11 @@ def answer_call():
     return jsonify(ncco)
 
 
-
 @app.route("/webhooks/dtmf", methods=['POST'])
 def inout_webhook():
     data = request.get_json()
     pprint(data)
-    ncco =[
+    ncco = [
         {
             "action": "talk",
             "text": "You pressed {}, goodbye".format(data['dtmf'])
