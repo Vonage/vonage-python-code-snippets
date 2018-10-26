@@ -6,6 +6,8 @@ app = Flask(__name__)
 
 @app.route("/webhooks/inbound-message", methods=['POST'])
 def inbound_message():
+    '''Prints status for inbound message and returns json code OK "200" 
+    '''
     data = request.get_json()
     pprint(data)
     return "200"
