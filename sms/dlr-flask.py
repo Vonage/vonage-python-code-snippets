@@ -3,6 +3,7 @@ from pprint import pprint
 
 app = Flask(__name__)
 
+
 @app.route('/webhooks/delivery-receipt', methods=['GET', 'POST'])
 def delivery_receipt():
     if request.is_json:
@@ -12,5 +13,6 @@ def delivery_receipt():
         pprint(data)
         
     return ('', 204)
+
 
 app.run(port=3000)

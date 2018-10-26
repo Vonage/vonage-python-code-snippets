@@ -3,6 +3,7 @@ from pprint import pprint
 
 app = Flask(__name__)
 
+
 @app.route('/webhooks/inbound-sms', methods=['GET', 'POST'])
 def inbound_sms():
     if request.is_json:
@@ -12,5 +13,6 @@ def inbound_sms():
         pprint(data)
 
     return ('', 204)
+
 
 app.run(port=3000)
