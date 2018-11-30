@@ -1,6 +1,6 @@
+import argparse
 import os
 from os.path import join, dirname
-import sys
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), "../.env")
@@ -9,12 +9,13 @@ load_dotenv(dotenv_path)
 NEXMO_API_KEY = os.getenv("NEXMO_API_KEY")
 NEXMO_API_SECRET = os.getenv("NEXMO_API_SECRET")
 
-if len(sys.argv) != 3:
-    print("Please supply request_id and verification code")
-    exit()
+argument_parser = argparse.ArgumentParser()
+argument_parser.add_argument("request_id")
+argument_parser.add_argument("verification_code")
+arguments = argument_parser.parse_args()
 
-REQUEST_ID = sys.argv[1]
-CODE = sys.argv[2]
+REQUEST_ID = arguments.request_id
+CODE = arguments.verification_code
 
 import nexmo
 
