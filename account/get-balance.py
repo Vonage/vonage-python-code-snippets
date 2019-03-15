@@ -14,4 +14,4 @@ import nexmo
 client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
 
 result = client.get_balance()
-pprint(str(round(result['value'], 2)) + " EUR")
+print(f"{result['value']:0.2f} EUR")
