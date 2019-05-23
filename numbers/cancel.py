@@ -17,5 +17,5 @@ client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
 try:
     response = client.cancel_number({"country": COUNTRY_CODE, "msisdn": NEXMO_NUMBER})
     print("Number cancelled")
-except:
-    print("Error cancelling number")
+except Exception as exc:
+    print("Error cancelling number", exc)

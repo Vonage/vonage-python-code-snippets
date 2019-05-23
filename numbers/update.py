@@ -33,5 +33,5 @@ try:
         }
     )
     print("Number updated")
-except:
-    print("Error updating number")
+except Exception as exc:
+    print("Error updating number", exc)

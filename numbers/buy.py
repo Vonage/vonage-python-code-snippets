@@ -17,5 +17,5 @@ client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
 try:
     response = client.buy_number({"country": COUNTRY_CODE, "msisdn": NEXMO_NUMBER})
     print("Number purchased")
-except:
-    print("Error purchasing number")
+except Exception as exc:
+    print("Error purchasing number", exc)

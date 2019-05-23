@@ -28,7 +28,7 @@ responseData = client.get_available_numbers(
 )
 
 print(
-    f'Here are {str(len(responseData["numbers"]))} of the {str(responseData["count"])} matching numbers available for purchase:'
+    f'Here are {len(responseData["numbers"])} of the {responseData["count"]} matching numbers available for purchase:'
 )
 
 for number in responseData["numbers"]:
