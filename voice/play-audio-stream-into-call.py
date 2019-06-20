@@ -6,4 +6,4 @@ client = nexmo.Client(
 )
 
 stream_url = 'https://nexmo-community.github.io/ncco-examples/assets/voice_api_audio_streaming.mp3'
-client.send_audio(NEXMO_CALL_UUID, stream_url=stream_url)
+client.send_audio(NEXMO_CALL_UUID, stream_url=[stream_url])
