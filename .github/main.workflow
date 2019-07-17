@@ -16,4 +16,3 @@ action "nexmo/github-actions/submodule-auto-pr@master" {
     PR_ACTIVE_BRANCH = "master"
   }
 }
-
