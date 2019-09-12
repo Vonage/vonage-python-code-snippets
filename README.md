@@ -1,8 +1,8 @@
-# Nexmo Quickstart Examples for Python
+# Nexmo Code Snippets for Python
 
-Quickstarts also available for: [Java](https://github.com/nexmo-community/nexmo-java-quickstart), [.NET](https://github.com/nexmo-community/nexmo-dotnet-quickstart), [Node.js](https://github.com/nexmo-community/nexmo-node-quickstart), [PHP](https://github.com/nexmo-community/nexmo-php-quickstart),  [Ruby](https://github.com/nexmo-community/nexmo-ruby-quickstart)
+Quickstarts also available for: [Java](https://github.com/Nexmo/nexmo-java-code-snippets), [.NET](https://github.com/Nexmo/nexmo-dotnet-code-snippets), [Node.js](https://github.com/Nexmo/nexmo-node-code-snippets), [PHP](https://github.com/Nexmo/nexmo-php-code-snippets),  [Ruby](https://github.com/Nexmo/nexmo-ruby-code-snippets) and [curl](https://github.com/Nexmo/nexmo-curl-code-snippets).
 
-The purpose of the Quickstart guide is to provide simple examples focused
+The purpose of the Code Snippets is to provide simple examples focused
 on one goal. For example, sending an SMS, handling an incoming SMS webhook,
 or making a Text to Speech call.
 
