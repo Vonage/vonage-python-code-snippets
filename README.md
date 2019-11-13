@@ -1,14 +1,14 @@
-# Nexmo Quickstart Examples for Python
+# Nexmo Code Snippets for Python
 
-Quickstarts also available for: [Java](https://github.com/nexmo-community/nexmo-java-quickstart), [.NET](https://github.com/nexmo-community/nexmo-dotnet-quickstart), [Node.js](https://github.com/nexmo-community/nexmo-node-quickstart), [PHP](https://github.com/nexmo-community/nexmo-php-quickstart),  [Ruby](https://github.com/nexmo-community/nexmo-ruby-quickstart) and [Android](https://github.com/nexmo-community/quickstart-android)
+Code snipets also available for: [Java](https://github.com/nexmo/nexmo-java-code-snippets), [.NET](https://github.com/nexmo/nexmo-dotnet-code-snippets), [Node.js](https://github.com/nexmo/nexmo-node-code-snippets), [PHP](https://github.com/nexmo/nexmo-php-code-snippets), [Ruby](https://github.com/nexmo/nexmo-ruby-code-snippets), [Curl](https://github.com/Nexmo/nexmo-curl-code-snippets) and [Android](https://github.com/nexmo-community/quickstart-android)
 
-The purpose of the Quickstart guide is to provide simple examples focused
+The purpose of the Code Snippets is to provide simple examples focused
 on one goal. For example, sending an SMS, handling an incoming SMS webhook,
 or making a Text to Speech call.
 
 ## Setup
 
-To use the examples you will first need a [Nexmo account][sign-up]. Then rename
+To use the examples, you will first need a [Nexmo account][sign-up]. Then rename
 the `example.env` file to `.env` and set the values as required.
 
 For some of the examples you will need to [buy a number][buy-number].
@@ -34,7 +34,7 @@ Navigate to the appropriate route defined in `server.py` to execute the example.
 
 ## Request an Example
 
-Please [raise and issue](https://github.com/nexmo-community/nexmo-python-quickstart/issues) to request an example that isn't present within the quickstart. Pull requests will be gratefully received.
+Please [raise an issue](https://github.com/nexmo-community/nexmo-python-quickstart/issues) to request an example that isn't present within the quickstart. Pull requests will be gratefully received.
 
 ## License
 
