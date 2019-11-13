@@ -8,7 +8,7 @@ or making a Text to Speech call.
 
 ## Setup
 
-To use the examples you will first need a [Nexmo account][sign-up]. Then rename
+To use the examples, you will first need a [Nexmo account][sign-up]. Then rename
 the `example.env` file to `.env` and set the values as required.
 
 For some of the examples you will need to [buy a number][buy-number].
