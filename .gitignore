@@ -91,5 +91,9 @@ ENV/
 # nexmo key files
 *.key
 
+#IDE's and Editor's Temporary Files
+.vscode
+.idea
+
 .DS_Store
 settings.json
