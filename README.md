@@ -1,6 +1,6 @@
 # Nexmo Code Snippets for Python
 
-Quickstarts also available for: [Java](https://github.com/Nexmo/nexmo-java-code-snippets), [.NET](https://github.com/Nexmo/nexmo-dotnet-code-snippets), [Node.js](https://github.com/Nexmo/nexmo-node-code-snippets), [PHP](https://github.com/Nexmo/nexmo-php-code-snippets),  [Ruby](https://github.com/Nexmo/nexmo-ruby-code-snippets) and [curl](https://github.com/Nexmo/nexmo-curl-code-snippets).
+Code snipets also available for: [Java](https://github.com/nexmo/nexmo-java-code-snippets), [.NET](https://github.com/nexmo/nexmo-dotnet-code-snippets), [Node.js](https://github.com/nexmo/nexmo-node-code-snippets), [PHP](https://github.com/nexmo/nexmo-php-code-snippets), [Ruby](https://github.com/nexmo/nexmo-ruby-code-snippets), [Curl](https://github.com/Nexmo/nexmo-curl-code-snippets) and [Android](https://github.com/nexmo-community/quickstart-android)
 
 The purpose of the Code Snippets is to provide simple examples focused
 on one goal. For example, sending an SMS, handling an incoming SMS webhook,
