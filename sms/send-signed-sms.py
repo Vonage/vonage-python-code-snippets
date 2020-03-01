@@ -10,14 +10,13 @@ load_dotenv(envpath)
 #Init the client
 client = nexmo.Client(
     key = os.getenv('NEXMO_API_KEY'),
-    secret = os.getenv('NEXMO_API_SECRET'),
     signature_secret = os.getenv('NEXMO_SIGNATURE_SECRET'),
     signature_method = 'md5'
 )
 
 #Define variables - replace FROM_NUMBER and TO_NUMBER with actual numbers
-from_number = FROM_NUMBER
-to_number = TO_NUMBER
+from_number = os.getenv('FROM_NUMBER')
+to_number = os.getenv('TO_NUMBER')
 text = 'A text message sent using the Nexmo SMS API'
 
 #Sending the sms
