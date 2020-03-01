@@ -21,7 +21,7 @@ new_api_secret = getpass.getpass("Enter secret: ")
 try:
     response = client.create_secret(api_key, new_api_secret)
     if "id" in response:
-        print("Key was created\nId: {}\nCreated at: {}\nLinks: {}".format(response["id"], response["created_at"], response["_links"]["self"]["href"]))
+                print("Secret was created\nId: {}\nCreated at: {}\nLinks: {}".format(response["id"], response["created_at"], response["_links"]["self"]["href"]))
 except:
     print(
         "Error: Secret does not meet complexity requirements. Please check the link below for more details:\n",
