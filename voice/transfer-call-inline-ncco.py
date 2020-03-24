@@ -16,8 +16,8 @@ client = nexmo.Client(
 )
 
 response = client.create_call({
-  'to': [{'type': 'phone', 'number': os.getenv('TO_NUMBER' }],
-  'from': {'type': 'phone', 'number': os.getenv('FROM_NUMBER' },
+  'to': [{'type': 'phone', 'number': os.getenv('TO_NUMBER')}],
+  'from': {'type': 'phone', 'number': os.getenv('FROM_NUMBER')},
   "ncco": [{"action": "talk", "text": "This is an old NCCO that will be replaced with another one"}]
 })
 
