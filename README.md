@@ -10,12 +10,16 @@ or making a Text to Speech call.
 
 ## Setup
 
+These code samples are meant to be used for [https://developer.nexmo.com/](https://developer.nexmo.com/), and are structured in such a way as to be used for internal testing. Developers are free to use these code snippets as a reference, but these may require changes to be worked into your specific application. We recommend checking out the [Nexmo Developer Website](https://developer.nexmo.com/), which displays these code snippets in a more copy/paste fashion.
+
 To use the examples, you will first need a [Nexmo account][sign-up]. Then rename
 the `example.env` file to `.env` and set the values as required.
 
 For some of the examples you will need to [buy a number][buy-number].
 
 ## Running the Examples
+
+If you would like to run these examples yourself, you will need to do the following:
 
 All the examples run from a [Flask](http://flask.pocoo.org/) server.
 
