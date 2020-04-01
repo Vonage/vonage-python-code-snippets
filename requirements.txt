@@ -10,7 +10,7 @@ nexmo==2.0.0
 ordereddict==1.1
 pycrypto==2.6.1
 python-jose==1.2.0
-PyYAML==3.12
+PyYAML==5.1
 requests==2.20.0
 shellescape==3.4.1
 six==1.10.0
