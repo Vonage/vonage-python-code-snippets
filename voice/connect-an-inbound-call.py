@@ -10,7 +10,7 @@ def answer_call():
             "action": "connect",
             "from": "NEXMO_NUMBER",
             "endpoint": [{
-                "type": 'phone',
+                "type": "phone",
                 "number": "YOUR_SECOND_NUMBER"
             }]
         }
