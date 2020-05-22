@@ -16,7 +16,7 @@ client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
 
 responseData = client.send_message(
     {
-        "from": "Acme Inc",
+        "from": NEXMO_BRAND_NAME,
         "to": TO_NUMBER,
         "text": "A text message sent using the Nexmo SMS API",
     }
