@@ -8,6 +8,7 @@ load_dotenv(dotenv_path)
 NEXMO_API_KEY = os.getenv("NEXMO_API_KEY")
 NEXMO_API_SECRET = os.getenv("NEXMO_API_SECRET")
 TO_NUMBER = os.getenv("TO_NUMBER")
+NEXMO_BRAND_NAME = os.getenv('NEXMO_BRAND_NAME')
 
 import nexmo
 
