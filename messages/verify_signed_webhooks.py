@@ -24,7 +24,6 @@ def inbound():
     token = parts[1].strip()
 
     # Extract api_key from token payload
-    # So we can find matching sig secret
     k = jwt.decode(token, verify=False)["api_key"]
     # Use k to look up corresponding sig secret
     
