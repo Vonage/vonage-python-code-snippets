@@ -16,7 +16,6 @@ app = Flask(__name__)
 port = os.getenv('PORT')
 api_key = os.getenv('NEXMO_API_KEY') # there may be multiple api_key/sig_secret pairs
 sig_secret = os.getenv('NEXMO_SIG_SECRET')
-verify_webhooks = True # Set to False if you don't want to verify webhooks
 
 @app.route("/webhooks/inbound", methods=['POST'])
 def inbound():
