@@ -14,28 +14,31 @@ load_dotenv(envpath)
 app = Flask(__name__)
 
 port = os.getenv('PORT')
-api_key = os.getenv('NEXMO_API_KEY')
+api_key = os.getenv('NEXMO_API_KEY') # there may be multiple api_key/sig_secret pairs
 sig_secret = os.getenv('NEXMO_SIG_SECRET')
 verify_webhooks = True # Set to False if you don't want to verify webhooks
-error_message = ''
 
-def verify_webhook(request):
-    global error_message
-
+@app.route("/webhooks/inbound", methods=['POST'])
+def inbound():
     # Need token after 'Bearer'
     parts = request.headers['authorization'].split() 
     token = parts[1].strip()
 
-    # Verify request
-    decoded = jwt.decode(token, sig_secret, algorithms='HS256')
-    if decoded['api_key'] == api_key:
-        print('Valid callback signature')
-        # we can continue to check payload 
-    else:
-        error_message = 'Warning: Invalid callback signature!'
-        print(error_message)
-        return False
+    # Extract api_key from token payload
+    # So we can find matching sig secret
+    k = jwt.decode(token, verify=False)["api_key"]
+    # Use k to look up corresponding sig secret
     
+    #### 1. Verify request
+    try:
+        decoded = jwt.decode(token, sig_secret, algorithms='HS256')
+    except Exception as e:
+        print(e)
+        r = '{"msg": "' + str(e) +'"}'
+        return (r, 401)
+    
+    #### 2. Verify payload (only needed if using HTTP rather than HTTPS)
+
     # Obtain transmitted payload hash
     payload_hash = decoded["payload_hash"]
 
@@ -46,22 +49,10 @@ def verify_webhook(request):
 
     # Check the payload hash matches the one we created ourselves from request data
     if (hd != payload_hash):
-        error_message = "WARNING: payload may have been tampered with in-transit"
-        return False
-    print("Verified payload")
-    return True 
-
-@app.route("/webhooks/inbound", methods=['POST'])
-def inbound():
-    if verify_webhooks:
-        if verify_webhook(request):
-            data = request.get_json()
-            pprint(data) 
-            return (jsonify(data))
-        else:
-            error_obj = {'error_message': error_message, 'error_code': 401}
-            error = json.dumps(error_obj)
-            return (error, 401)
+        return ('{"msg": "Invalid payload"}', 401)
+    else:
+        print("Verified payload")
+    return "OK"
 
 @app.route("/webhooks/status", methods=['POST'])
 def status():
