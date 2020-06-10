@@ -14,11 +14,11 @@ client = nexmo.Client(
     private_key=os.getenv("NEXMO_PRIVATE_KEY")
 )
 
-uuid = os.getenv('CALL_UUID')
+UUID = os.getenv('CALL_UUID')
 
 #Update the current NCCO with a new one 
 response = client.update_call(
-    uuid, {
+    UUID, {
         "action": "transfer",
         "destination": {
             "type": "ncco",
