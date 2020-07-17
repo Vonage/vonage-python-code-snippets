@@ -9,7 +9,7 @@ NEXMO_API_KEY = os.getenv("NEXMO_API_KEY")
 NEXMO_API_SECRET = os.getenv("NEXMO_API_SECRET")
 NEXMO_NUMBER = os.getenv("NEXMO_NUMBER")
 COUNTRY_CODE = os.getenv("COUNTRY_CODE")
-MESSAGES_APPLICATION_ID = os.getenv("MESSAGES_APPLICATION_ID")
+NEXMO_APPLICATION_ID = os.getenv("NEXMO_APPLICATION_ID")
 VOICE_CALLBACK_TYPE = os.getenv("VOICE_CALLBACK_TYPE")
 VOICE_CALLBACK_VALUE = os.getenv("VOICE_CALLBACK_VALUE")
 VOICE_STATUS_URL = os.getenv("VOICE_STATUS_URL")
@@ -24,8 +24,7 @@ try:
         {
             "msisdn": NEXMO_NUMBER,
             "country": COUNTRY_CODE,
-            "messagesCallbackType": "app",
-            "messagesCallbackValue": MESSAGES_APPLICATION_ID,
+            "app_id": NEXMO_APPLICATION_ID,
             "voiceCallbackType": VOICE_CALLBACK_TYPE,
             "voiceCallbackValue": VOICE_CALLBACK_VALUE,
             "voiceStatusCallback": VOICE_STATUS_URL,
