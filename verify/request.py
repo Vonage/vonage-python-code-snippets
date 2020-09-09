@@ -9,11 +9,12 @@ NEXMO_API_KEY = os.getenv("NEXMO_API_KEY")
 NEXMO_API_SECRET = os.getenv("NEXMO_API_SECRET")
 RECIPIENT_NUMBER = os.getenv("RECIPIENT_NUMBER")
 
-import nexmo
+import vonage
 
-client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
+client = vonage.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
+verify = vonage.Verify(client)
 
-response = client.start_verification(number=RECIPIENT_NUMBER, brand="AcmeInc")
+response = verify.start_verification(number=RECIPIENT_NUMBER, brand="AcmeInc")
 
 if response["status"] == "0":
     print("Started verification request_id is %s" % (response["request_id"]))

@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
-import nexmo
+import vonage, os
 from pprint import pprint
 
-client = nexmo.Client(
+APPLICATION_ID=os.environ.get("APPLICATION_ID")
+APPLICATION_PRIVATE_KEY_PATH=os.environ.get("APPLICATION_PRIVATE_KEY_PATH")
+
+client = vonage.Client(
     application_id=APPLICATION_ID,
     private_key=APPLICATION_PRIVATE_KEY_PATH,
 )
 
+voice = vonage.Voice(client)
+
 dest = {"type": "ncco", "url": ["https://developer.nexmo.com/ncco/tts.json"]}
-response = client.update_call(UUID, action="transfer", destination=dest)
+response = voice.update_call(UUID, action="transfer", destination=dest)
 pprint(response)

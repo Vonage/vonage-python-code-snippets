@@ -10,9 +10,9 @@ NEXMO_API_SECRET = os.getenv("NEXMO_API_SECRET")
 NEXMO_NUMBER = os.getenv("NEXMO_NUMBER")
 COUNTRY_CODE = os.getenv("COUNTRY_CODE")
 
-import nexmo
+import vonage
 
-client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
+client = vonage.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
 
 try:
     response = client.cancel_number({"country": COUNTRY_CODE, "msisdn": NEXMO_NUMBER})

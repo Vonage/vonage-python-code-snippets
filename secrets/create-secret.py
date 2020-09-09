@@ -1,4 +1,4 @@
-import nexmo, os, getpass
+import vonage, os, getpass
 from os.path import join, dirname
 from dotenv import load_dotenv
 
@@ -7,15 +7,16 @@ envpath = join(dirname(__file__),'./.env')
 load_dotenv(envpath)
 
 #Init the client
-client = nexmo.Client(
+client = vonage.Client(
     key = os.getenv('NEXMO_API_KEY'),
     secret = os.getenv('NEXMO_API_SECRET')
 )
 
 #Get data from user from keyword
-api_key = input("Enter your api_key: ")
+api_key = os.getenv('NEXMO_API_KEY')
 #Use getpass instead of input to mask secret
-new_api_secret = getpass.getpass("Enter secret: ")
+#new_api_secret = getpass.getpass("Enter secret: ")
+new_api_secret = os.getenv('NEW_API_SECRET')
 
 #Create the secret
 try:

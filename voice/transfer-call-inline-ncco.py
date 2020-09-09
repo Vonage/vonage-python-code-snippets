@@ -1,5 +1,5 @@
 # Import dependencies
-import nexmo
+import vonage
 import os
 from os.path import join, dirname
 from dotenv import load_dotenv
@@ -9,13 +9,15 @@ envpath = join(dirname(__file__), './.env')
 load_dotenv(envpath)
 
 # Init the client
-print(os.getenv("NEXMO_PRIVATE_KEY"))
-client = nexmo.Client(
+
+client = vonage.Client(
     application_id=os.getenv('NEXMO_APPLICATION_ID'),
     private_key=os.getenv("NEXMO_PRIVATE_KEY")
 )
 
-response = client.create_call({
+voice = vonage.Voice(client)
+
+response = voice.create_call({
     "to": [{"type": "phone", "number": os.getenv('TO_NUMBER')}],
     "from": {"type": "phone", "number": os.getenv('FROM_NUMBER')},
     "ncco": [
@@ -26,7 +28,7 @@ response = client.create_call({
     ]
 })
 
-response = client.update_call(
+response = voice.update_call(
     response["uuid"], {
         "action": "transfer",
         "destination": {

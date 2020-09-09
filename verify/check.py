@@ -17,11 +17,11 @@ arguments = argument_parser.parse_args()
 REQUEST_ID = arguments.request_id
 CODE = arguments.verification_code
 
-import nexmo
+import vonage
 
-client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
+verify = vonage.Verify(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
 
-response = client.check_verification(REQUEST_ID, code=CODE)
+response = verify.check(REQUEST_ID, code=CODE)
 
 if response["status"] == "0":
     print("Verification successful, event_id is %s" % (response["event_id"]))

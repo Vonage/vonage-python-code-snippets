@@ -10,9 +10,9 @@ NEXMO_API_SECRET = os.getenv("NEXMO_API_SECRET")
 NUMBER_SEARCH_CRITERIA = os.getenv("NUMBER_SEARCH_CRITERIA")
 NUMBER_SEARCH_PATTERN = os.getenv("NUMBER_SEARCH_PATTERN")
 
-import nexmo
+import vonage
 
-client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
+client = vonage.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
 
 responseData = client.get_account_numbers(
     {"pattern": NUMBER_SEARCH_CRITERIA, "search_pattern": NUMBER_SEARCH_PATTERN}

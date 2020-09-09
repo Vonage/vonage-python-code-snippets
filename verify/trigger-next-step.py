@@ -15,11 +15,12 @@ arguments = argument_parser.parse_args()
 
 REQUEST_ID = arguments.request_id
 
-import nexmo
+from vonage import Client, Verify
 
-client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
+client = Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
 
-response = client.trigger_next_verification_event(REQUEST_ID)
+verify = Verify(client)
+response = verify.trigger_next_event(REQUEST_ID)
 
 if response["status"] == "0":
     print("Next verification stage triggered")

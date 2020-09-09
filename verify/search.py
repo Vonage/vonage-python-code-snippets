@@ -21,9 +21,9 @@ verify = Verify (
         Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
     )
 
-response = verify.cancel(REQUEST_ID)
+response = verify.search(REQUEST_ID)
 
-if response["status"] == "0":
-    print("Cancellation successful")
+if response is not None:
+    print(response['status'])
 else:
-    print("Error: %s" % response["error_text"])
+    print(f'{REQUEST_ID} was not found')

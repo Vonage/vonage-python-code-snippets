@@ -9,11 +9,12 @@ NEXMO_API_KEY = os.getenv("NEXMO_API_KEY")
 NEXMO_API_SECRET = os.getenv("NEXMO_API_SECRET")
 TO_NUMBER = os.getenv("TO_NUMBER")
 
-import nexmo
+import vonage
 
-client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
+client = vonage.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
+sms = vonage.Sms(client)
 
-responseData = client.send_message(
+responseData = sms.send_message(
     {
         "from": "Acme Inc",
         "to": TO_NUMBER,

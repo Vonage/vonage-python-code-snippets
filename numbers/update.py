@@ -15,9 +15,9 @@ VOICE_CALLBACK_VALUE = os.getenv("VOICE_CALLBACK_VALUE")
 VOICE_STATUS_URL = os.getenv("VOICE_STATUS_URL")
 SMS_CALLBACK_URL = os.getenv("SMS_CALLBACK_URL")
 
-import nexmo
+import vonage
 
-client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
+client = vonage.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
 
 try:
     response = client.update_number(

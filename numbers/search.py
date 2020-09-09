@@ -13,9 +13,9 @@ NUMBER_SEARCH_PATTERN = os.getenv("NUMBER_SEARCH_PATTERN")
 NEXMO_NUMBER_TYPE = os.getenv("NEXMO_NUMBER_TYPE")
 NEXMO_NUMBER_FEATURES = os.getenv("NEXMO_NUMBER_FEATURES")
 
-import nexmo
+import vonage
 
-client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
+client = vonage.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
 
 responseData = client.get_available_numbers(
     COUNTRY_CODE,

@@ -10,9 +10,9 @@ NEXMO_API_KEY = os.getenv('NEXMO_API_KEY')
 NEXMO_API_SECRET = os.getenv('NEXMO_API_SECRET')
 SMS_CALLBACK_URL = os.getenv('SMS_CALLBACK_URL')
 
-import nexmo
+import vonage
 
-client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
+client = vonage.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
 
 result = client.update_settings({'moCallBackUrl':SMS_CALLBACK_URL})
 pprint(result)

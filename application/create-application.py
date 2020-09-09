@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-import nexmo
+import vonage, os
 from pprint import pprint
 
-client = nexmo.Client(
+NEXMO_API_KEY = os.getenv('NEXMO_API_KEY')
+NEXMO_API_SECRET = os.getenv('NEXMO_API_SECRET')
+
+client = vonage.Client(
     key=NEXMO_API_KEY,
     secret=NEXMO_API_SECRET
 )

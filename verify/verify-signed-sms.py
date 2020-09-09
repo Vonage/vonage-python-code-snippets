@@ -1,4 +1,4 @@
-import nexmo
+import vonage
 from flask import Flask, request
 
 app = Flask(__name__)
@@ -14,7 +14,7 @@ def inbound():
     
     if "sig" in params:
         #Init the client, just when needed
-        client = nexmo.Client(
+        client = vonage.Client(
             key = os.getenv('NEXMO_API_KEY'),
             secret = os.getenv('NEXMO_API_SECRET'),
             signature_secret = os.getenv('NEXMO_SIGNATURE_SECRET'),
