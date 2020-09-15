@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 envpath = join(dirname(__file__), './.env')
 load_dotenv(envpath)
 
+
 # Init the client
 
 client = vonage.Client(
