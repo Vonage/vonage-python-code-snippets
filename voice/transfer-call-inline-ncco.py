@@ -8,12 +8,11 @@ from dotenv import load_dotenv
 envpath = join(dirname(__file__), './.env')
 load_dotenv(envpath)
 
-
 # Init the client
 
 client = vonage.Client(
-    application_id=os.getenv('NEXMO_APPLICATION_ID'),
-    private_key=os.getenv("NEXMO_PRIVATE_KEY")
+    application_id=os.getenv('VONAGE_APPLICATION_ID'),
+    private_key=os.getenv("VONAGE_PRIVATE_KEY")
 )
 
 voice = vonage.Voice(client)

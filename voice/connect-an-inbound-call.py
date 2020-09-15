@@ -8,7 +8,7 @@ def answer_call():
     ncco = [
         {
             "action": "connect",
-            "from": "NEXMO_NUMBER",
+            "from": "VONAGE_NUMBER",
             "endpoint": [{
                 "type": 'phone',
                 "number": "YOUR_SECOND_NUMBER"

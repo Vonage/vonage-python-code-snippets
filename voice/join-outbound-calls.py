@@ -16,7 +16,7 @@ def answer_call():
         },
         {
             "action": "connect",
-            "from": "NEXMO_NUMBER",
+            "from": "VONAGE_NUMBER",
             "endpoint": [{
                 "type": 'phone',
                 "number": "RECIPIENT_NUMBER_2"

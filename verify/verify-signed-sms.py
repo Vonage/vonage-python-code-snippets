@@ -19,9 +19,9 @@ def inbound():
     if "sig" in params:
         #Init the client, just when needed
         client = vonage.Client(
-            key = os.getenv('NEXMO_API_KEY'),
-            secret = os.getenv('NEXMO_API_SECRET'),
-            signature_secret = os.getenv('NEXMO_SIGNATURE_SECRET'),
+            key = os.getenv('VONAGE_API_KEY'),
+            secret = os.getenv('VONAGE_API_SECRET'),
+            signature_secret = os.getenv('VONAGE_SIGNATURE_SECRET'),
             signature_method = 'md5'
         )
         #Check signature from params

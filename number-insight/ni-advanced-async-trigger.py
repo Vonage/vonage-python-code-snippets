@@ -9,8 +9,8 @@ load_dotenv(envpath)
 
 #Init the client
 client = vonage.Client(
-    key = os.getenv('NEXMO_API_KEY'),
-    secret = os.getenv('NEXMO_API_SECRET')
+    key = os.getenv('VONAGE_API_KEY'),
+    secret = os.getenv('VONAGE_API_SECRET')
 )
 
 insight_number = os.getenv('INSIGHT_NUMBER')

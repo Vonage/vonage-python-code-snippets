@@ -6,14 +6,14 @@ from pprint import pprint
 dotenv_path = join(dirname(__file__), "../.env")
 load_dotenv(dotenv_path)
 
-NEXMO_API_KEY = os.getenv('NEXMO_API_KEY')
-NEXMO_API_SECRET = os.getenv('NEXMO_API_SECRET')
+VONAGE_API_KEY = os.getenv('VONAGE_API_KEY')
+VONAGE_API_SECRET = os.getenv('VONAGE_API_SECRET')
 
 client = vonage.Client(
-    key=NEXMO_API_KEY,
-    secret=NEXMO_API_SECRET
+    key=VONAGE_API_KEY,
+    secret=VONAGE_API_SECRET
 )
 
-response = client.application_v2.get_application(NEXMO_APPLICATION_ID)
+response = client.application_v2.get_application(VONAGE_APPLICATION_ID)
 
 pprint(response)
