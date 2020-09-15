@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), "../.env")
 load_dotenv(dotenv_path)
 
-VONAGE_API_KEY = os.getenv("VONAGE_API_KEY")
-VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
+NEXMO_API_KEY = os.getenv("NEXMO_API_KEY")
+NEXMO_API_SECRET = os.getenv("NEXMO_API_SECRET")
 
 argument_parser = argparse.ArgumentParser()
 argument_parser.add_argument("request_id")
@@ -17,7 +17,7 @@ REQUEST_ID = arguments.request_id
 
 from vonage import Client, Verify
 
-client = Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
+client = Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
 
 verify = Verify(client)
 response = verify.trigger_next_event(REQUEST_ID)
