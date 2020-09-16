@@ -2,6 +2,7 @@
 import vonage, os
 from pprint import pprint
 from datetime import datetime, timedelta
+from os.path import join, dirname
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), "../.env")

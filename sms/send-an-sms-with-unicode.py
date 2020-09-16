@@ -8,6 +8,7 @@ load_dotenv(dotenv_path)
 VONAGE_API_KEY = os.getenv('VONAGE_API_KEY')
 VONAGE_API_SECRET = os.getenv('VONAGE_API_SECRET')
 TO_NUMBER = os.getenv('TO_NUMBER')
+VONAGE_BRAND_NAME = os.getenv('VONAGE_BRAND_NAME')
 
 from vonage import Client, Sms
 
@@ -18,9 +19,14 @@ sms = Sms(
         )
     )
 
-sms.send_message({
-    'from': 'Acme Inc',
+response = sms.send_message({
+    'from': VONAGE_BRAND_NAME,
     'to': TO_NUMBER,
     'text': 'こんにちは世界',
     'type': 'unicode',
 })
+
+if response["messages"][0]["status"] == "0":
+    print("Message sent successfully.")
+else:
+    print(f"Message failed with error: {response['messages'][0]['error-text']}")

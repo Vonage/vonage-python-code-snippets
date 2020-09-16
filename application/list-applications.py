@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import vonage, os
+from os.path import join, dirname
 from dotenv import load_dotenv
 from pprint import pprint
 
