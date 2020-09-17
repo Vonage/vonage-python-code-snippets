@@ -1,5 +1,9 @@
-import nexmo
+import vonage, os
 from flask import Flask, request
+from dotenv import load_dotenv
+
+dotenv_path = join(dirname(__file__), "../.env")
+load_dotenv(dotenv_path)
 
 app = Flask(__name__)
 
@@ -14,10 +18,10 @@ def inbound():
     
     if "sig" in params:
         #Init the client, just when needed
-        client = nexmo.Client(
-            key = os.getenv('NEXMO_API_KEY'),
-            secret = os.getenv('NEXMO_API_SECRET'),
-            signature_secret = os.getenv('NEXMO_SIGNATURE_SECRET'),
+        client = vonage.Client(
+            key = os.getenv('VONAGE_API_KEY'),
+            secret = os.getenv('VONAGE_API_SECRET'),
+            signature_secret = os.getenv('VONAGE_SIGNATURE_SECRET'),
             signature_method = 'md5'
         )
         #Check signature from params

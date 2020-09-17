@@ -20,7 +20,7 @@ def answer_call():
         {
             "action": "connect",
             "eventUrl": ["https://demo.ngrok.io/webhooks/event"],
-            "from": "NEXMO_NUMBER",
+            "from": "VONAGE_NUMBER",
             "endpoint": [
                 {
                     "type": "phone",

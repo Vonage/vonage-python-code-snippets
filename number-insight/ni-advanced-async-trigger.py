@@ -1,19 +1,19 @@
-import nexmo, os
+import vonage, os
 from os.path import join, dirname
 from dotenv import load_dotenv
 from pprint import pprint
 
 #Load the environment
-envpath = join(dirname(__file__),'./.env')
+envpath = join(dirname(__file__),'../.env')
 load_dotenv(envpath)
 
 #Init the client
-client = nexmo.Client(
-    key = os.getenv('NEXMO_API_KEY'),
-    secret = os.getenv('NEXMO_API_SECRET')
+client = vonage.Client(
+    key = os.getenv('VONAGE_API_KEY'),
+    secret = os.getenv('VONAGE_API_SECRET')
 )
 
-insight_number = input("Enter the number: ")
+insight_number = os.getenv('INSIGHT_NUMBER')
 
 #Start the trigger
 insight_trigger_json = client.get_advanced_number_insight(

@@ -5,25 +5,25 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), "../.env")
 load_dotenv(dotenv_path)
 
-NEXMO_API_KEY = os.getenv("NEXMO_API_KEY")
-NEXMO_API_SECRET = os.getenv("NEXMO_API_SECRET")
+VONAGE_API_KEY = os.getenv("VONAGE_API_KEY")
+VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
 COUNTRY_CODE = os.getenv("COUNTRY_CODE")
 NUMBER_SEARCH_CRITERIA = os.getenv("NUMBER_SEARCH_CRITERIA")
 NUMBER_SEARCH_PATTERN = os.getenv("NUMBER_SEARCH_PATTERN")
-NEXMO_NUMBER_TYPE = os.getenv("NEXMO_NUMBER_TYPE")
-NEXMO_NUMBER_FEATURES = os.getenv("NEXMO_NUMBER_FEATURES")
+VONAGE_NUMBER_TYPE = os.getenv("VONAGE_NUMBER_TYPE")
+VONAGE_NUMBER_FEATURES = os.getenv("VONAGE_NUMBER_FEATURES")
 
-import nexmo
+import vonage
 
-client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
+client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
 
 responseData = client.get_available_numbers(
     COUNTRY_CODE,
     {
         "pattern": NUMBER_SEARCH_CRITERIA,
         "search_pattern": NUMBER_SEARCH_PATTERN,
-        "type": NEXMO_NUMBER_TYPE,
-        "features": NEXMO_NUMBER_FEATURES,
+        "type": VONAGE_NUMBER_TYPE,
+        "features": VONAGE_NUMBER_FEATURES,
     },
 )
 

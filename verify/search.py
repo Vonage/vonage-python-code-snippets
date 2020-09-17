@@ -11,19 +11,19 @@ VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
 
 argument_parser = argparse.ArgumentParser()
 argument_parser.add_argument("request_id")
-argument_parser.add_argument("verification_code")
 arguments = argument_parser.parse_args()
 
 REQUEST_ID = arguments.request_id
-CODE = arguments.verification_code
 
-import vonage
+from vonage import Client, Verify
 
-verify = vonage.Verify(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
+verify = Verify (
+        Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
+    )
 
-response = verify.check(REQUEST_ID, code=CODE)
+response = verify.search(REQUEST_ID)
 
-if response["status"] == "0":
-    print("Verification successful, event_id is %s" % (response["event_id"]))
+if response is not None:
+    print(response['status'])
 else:
-    print("Error: %s" % response["error_text"])
+    print(f'{REQUEST_ID} was not found')

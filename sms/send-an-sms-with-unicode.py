@@ -5,23 +5,28 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), '../.env')
 load_dotenv(dotenv_path)
 
-NEXMO_API_KEY = os.getenv('NEXMO_API_KEY')
-NEXMO_API_SECRET = os.getenv('NEXMO_API_SECRET')
+VONAGE_API_KEY = os.getenv('VONAGE_API_KEY')
+VONAGE_API_SECRET = os.getenv('VONAGE_API_SECRET')
 TO_NUMBER = os.getenv('TO_NUMBER')
-NEXMO_BRAND_NAME = os.getenv('NEXMO_BRAND_NAME')
+VONAGE_BRAND_NAME = os.getenv('VONAGE_BRAND_NAME')
 
-import nexmo
+from vonage import Client, Sms
 
-client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
+sms = Sms(
+        Client(
+            key=VONAGE_API_KEY, 
+            secret=VONAGE_API_SECRET
+        )
+    )
 
-responseData = client.send_message({
-    'from': NEXMO_BRAND_NAME,
+response = sms.send_message({
+    'from': VONAGE_BRAND_NAME,
     'to': TO_NUMBER,
     'text': 'こんにちは世界',
     'type': 'unicode',
 })
 
-if responseData["messages"][0]["status"] == "0":
+if response["messages"][0]["status"] == "0":
     print("Message sent successfully.")
 else:
-    print(f"Message failed with error: {responseData['messages'][0]['error-text']}")
+    print(f"Message failed with error: {response['messages'][0]['error-text']}")

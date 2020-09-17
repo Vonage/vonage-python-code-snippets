@@ -1,12 +1,24 @@
 #!/usr/bin/env python3
-import nexmo
+import os
+from vonage import Voice, Client
 from pprint import pprint
+from os.path import join, dirname
+from dotenv import load_dotenv
 
-client = nexmo.Client(
-    application_id=APPLICATION_ID,
-    private_key=APPLICATION_PRIVATE_KEY_PATH,
+dotenv_path = join(dirname(__file__), "../.env")
+load_dotenv(dotenv_path)
+
+VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
+VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get("VONAGE_APPLICATION_PRIVATE_KEY_PATH")
+VONAGE_CALL_UUID = os.environ.get("UUID")
+
+voice = Voice(
+    Client(
+        application_id=VONAGE_APPLICATION_ID,
+        private_key=VONAGE_APPLICATION_PRIVATE_KEY_PATH,
+    )
 )
 
 # Note call can be made to current call or a completed call
-response = client.get_call("NEXMO_CALL_UUID")
+response = voice.get_call(VONAGE_CALL_UUID)
 pprint(response)
