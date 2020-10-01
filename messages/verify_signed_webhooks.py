@@ -14,7 +14,7 @@ load_dotenv(envpath)
 app = Flask(__name__)
 
 port = os.getenv('PORT')
-api_key = os.getenv('NEXMO_API_KEY') # there may be multiple api_key/sig_secret pairs
+api_key = os.getenv('NEXMO_API_KEY')
 sig_secret = os.getenv('NEXMO_SIG_SECRET')
 
 @app.route("/webhooks/inbound", methods=['POST'])
@@ -27,7 +27,6 @@ def inbound():
     k = jwt.decode(token, verify=False)["api_key"]
     # Use k to look up corresponding sig secret
     
-    #### 1. Verify request
     try:
         decoded = jwt.decode(token, sig_secret, algorithms='HS256')
     except Exception as e:
@@ -35,15 +34,15 @@ def inbound():
         r = '{"msg": "' + str(e) +'"}'
         return (r, 401)
     
-    #### 2. Verify payload (only needed if using HTTP rather than HTTPS)
+    #### Verify payload (only needed if using HTTP rather than HTTPS)
 
     # Obtain transmitted payload hash
     payload_hash = decoded["payload_hash"]
 
     # generate hash of request payload
     payload = request.data # Obtains request data as binary string
-    h = hashlib.sha256(payload) # requires binary string
-    hd = h.hexdigest() # Use hexdigest() and NOT digest()
+    h = hashlib.sha256(payload) 
+    hd = h.hexdigest() 
 
     # Check the payload hash matches the one we created ourselves from request data
     if (hd != payload_hash):
