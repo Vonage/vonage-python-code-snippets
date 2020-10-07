@@ -14,4 +14,4 @@ import vonage
 client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
 
 result = client.get_balance()
-print(f"{result['value']:0.2f} EUR")
+print("{result['value']:0.2f} EUR")
