@@ -11,11 +11,11 @@ jobs:
     - name: Update NDP Submodule
       uses: nexmo/github-actions/submodule-auto-pr@master
       env:
-        GH_ADMIN_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
+        GH_ADMIN_TOKEN: ${{ secrets.PDX_GH_TOKEN }}
         PR_ACTIVE_BRANCH: master
         PR_BRANCH_NAME: automated-python-snippets-update
-        PR_SUBMODULE_PATH: .repos/nexmo/nexmo-python-code-snippets
+        PR_SUBMODULE_PATH: .repos/vonage/vonage-python-code-snippets
         PR_TARGET_BRANCH: master
         PR_TARGET_ORG: nexmo
         PR_TARGET_REPO: nexmo-developer
-        PR_TITLE: nexmo-python-code-snippets Update
+        PR_TITLE: vonage-python-code-snippets Update
