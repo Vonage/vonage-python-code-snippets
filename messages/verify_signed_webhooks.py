@@ -1,11 +1,10 @@
-import jwt
 import hashlib
-import json
 import os
-from flask import Flask, request, jsonify
 from os.path import join, dirname
+from flask import Flask, request, jsonify
+import jwt
 from dotenv import load_dotenv
-from pprint import pprint
+
 
 #Load the environment
 envpath = join(dirname(__file__),'../.env')
@@ -20,13 +19,13 @@ sig_secret = os.getenv('NEXMO_SIG_SECRET')
 @app.route("/webhooks/inbound", methods=['POST'])
 def inbound():
     # Need token after 'Bearer'
-    parts = request.headers['authorization'].split() 
+    parts = request.headers['authorization'].split()
     token = parts[1].strip()
 
     # Extract api_key from token payload
     k = jwt.decode(token, verify=False)["api_key"]
     # Use k to look up corresponding sig secret
-    
+
     #### 1. Verify request
     try:
         decoded = jwt.decode(token, sig_secret, algorithms='HS256')
@@ -34,7 +33,7 @@ def inbound():
         print(e)
         r = '{"msg": "' + str(e) +'"}'
         return (r, 401)
-    
+
     #### 2. Verify payload (only needed if using HTTP rather than HTTPS)
 
     # Obtain transmitted payload hash

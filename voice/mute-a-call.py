@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-from vonage import Voice
-import time, os
-from pprint import pprint
+import time
+import os
 from os.path import join, dirname
+from pprint import pprint
+from vonage import Voice
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), "../.env")
 load_dotenv(dotenv_path)
 
-VONAGE_APPLICATION_ID=os.environ.get("VONAGE_APPLICATION_ID")
-VONAGE_APPLICATION_PRIVATE_KEY_PATH=os.environ.get("VONAGE_APPLICATION_PRIVATE_KEY_PATH")
+VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
+VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get("VONAGE_APPLICATION_PRIVATE_KEY_PATH")
 UUID = os.environ.get("UUID")
 
 voice = Voice(
