@@ -1,17 +1,18 @@
 #Import dependencies
-import vonage, os
+import os
 from os.path import join, dirname
 from dotenv import load_dotenv
+import vonage
 
 #Load the environment
-envpath = join(dirname(__file__),'../.env')
+envpath = join(dirname(__file__), '../.env')
 load_dotenv(envpath)
 
 #Init the client
 sms = vonage.Sms(
-    key = os.getenv('VONAGE_API_KEY'),
-    signature_secret = os.getenv('VONAGE_SIGNATURE_SECRET'),
-    signature_method = 'md5'
+    key=os.getenv('VONAGE_API_KEY'),
+    signature_secret=os.getenv('VONAGE_SIGNATURE_SECRET'),
+    signature_method='md5'
 )
 
 #Define variables - replace FROM_NUMBER and TO_NUMBER with actual numbers

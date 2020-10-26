@@ -2,6 +2,7 @@ import argparse
 import os
 from os.path import join, dirname
 from dotenv import load_dotenv
+import vonage
 
 dotenv_path = join(dirname(__file__), "../.env")
 load_dotenv(dotenv_path)
@@ -16,8 +17,6 @@ arguments = argument_parser.parse_args()
 
 REQUEST_ID = arguments.request_id
 CODE = arguments.verification_code
-
-import vonage
 
 verify = vonage.Verify(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
 

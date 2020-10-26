@@ -1,6 +1,7 @@
-import vonage, os
+import os
 from os.path import join, dirname
 from dotenv import load_dotenv
+import vonage
 
 # Load the environment
 envpath = join(dirname(__file__), "../.env")

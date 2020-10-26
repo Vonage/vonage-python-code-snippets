@@ -1,16 +1,18 @@
-import vonage, os
+
+import os
 from os.path import join, dirname
-from dotenv import load_dotenv
 from pprint import pprint
+from dotenv import load_dotenv
+import vonage
 
 #Load the environment
-envpath = join(dirname(__file__),'../.env')
+envpath = join(dirname(__file__), '../.env')
 load_dotenv(envpath)
 
 #Init the client
 client = vonage.Client(
-    key = os.getenv('VONAGE_API_KEY'),
-    secret = os.getenv('VONAGE_API_SECRET')
+    key=os.getenv('VONAGE_API_KEY'),
+    secret=os.getenv('VONAGE_API_SECRET')
 )
 
 insight_number = os.getenv('INSIGHT_NUMBER')

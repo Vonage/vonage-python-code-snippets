@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
+import vonage
 from flask import Flask, request, jsonify
-from pprint import pprint
 
 app = Flask(__name__)
 

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-import vonage, os
+import os
 from pprint import pprint
-from datetime import datetime, timedelta
 from os.path import join, dirname
+from datetime import datetime, timedelta
+import vonage
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), "../.env")

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-import vonage, os
 from pprint import pprint
+import os
 from os.path import join, dirname
 from dotenv import load_dotenv
+import vonage
 
 dotenv_path = join(dirname(__file__), "../.env")
 load_dotenv(dotenv_path)

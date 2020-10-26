@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-import os
-from vonage import Voice, Client
 from pprint import pprint
+import os
 from os.path import join, dirname
 from dotenv import load_dotenv
+from vonage import Voice, Client
 
 dotenv_path = join(dirname(__file__), "../.env")
 load_dotenv(dotenv_path)

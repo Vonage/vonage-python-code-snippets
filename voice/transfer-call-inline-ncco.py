@@ -1,7 +1,7 @@
 # Import dependencies
-import vonage
 import os
 from os.path import join, dirname
+import vonage
 from dotenv import load_dotenv
 
 # Load the environment
