@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-from pprint import pprint
 from flask import Flask, request, jsonify
+from pprint import pprint
 
 app = Flask(__name__)
 

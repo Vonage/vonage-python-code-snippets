@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-from pprint import pprint
 from flask import Flask, request, jsonify
+from pprint import pprint
 
 app = Flask(__name__)
 
@@ -10,10 +10,11 @@ def answer_call():
     for param_key, param_value in request.args.items():
         print("{}: {}".format(param_key, param_value))
     input_webhook_url = request.url_root + "webhooks/dtmf"
-    ncco = [
+    ncco =[
         {
             "action": "talk",
-            "text": "Hello, please press any key to continue."
+            "text": "Hi, this call collects DTMF input using Vonage's Voice API. Please press a couple of buttons on your phone keypad",
+            "language": "en-US"
         },
         {
             "action": "input",
@@ -29,7 +30,7 @@ def answer_call():
 def dtmf():
     data = request.get_json()
     pprint(data)
-    ncco = [
+    ncco =[
         {
             "action": "talk",
             "text": "You pressed {}, goodbye".format(data['dtmf'])

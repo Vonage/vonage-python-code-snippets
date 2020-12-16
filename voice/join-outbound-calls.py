@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -8,7 +8,7 @@ def answer_call():
     ncco = [
         {
             "action": "connect",
-            "from": "NEXMO_NUMBER",
+            "from": "VONAGE_NUMBER",
             "endpoint": [{
                 "type": 'phone',
                 "number": "RECIPIENT_NUMBER_1"
@@ -21,7 +21,7 @@ def answer_call():
                 "type": 'phone',
                 "number": "RECIPIENT_NUMBER_2"
             }]
-        }   
+        }        
     ]
     return jsonify(ncco)
 

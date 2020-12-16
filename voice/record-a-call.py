@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-from pprint import pprint
 from flask import Flask, request, jsonify
+from pprint import pprint
 
 app = Flask(__name__)
 
@@ -9,7 +9,8 @@ def answer_call():
     ncco = [
         {
             "action": "talk",
-            "text": "Hi, we will shortly forward your call. This call is recorded for quality assurance purposes."
+            "text": "Hi, this call records this message. Check the parameters sent to the event url webhook endpoint and find the link you need to download this recording.",
+            "language": "en-US"
         },
         {
             "action": "record",
