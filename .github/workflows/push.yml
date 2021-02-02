@@ -15,7 +15,7 @@ jobs:
         PR_ACTIVE_BRANCH: master
         PR_BRANCH_NAME: automated-python-snippets-update
         PR_SUBMODULE_PATH: .repos/vonage/vonage-python-code-snippets
-        PR_TARGET_BRANCH: master
+        PR_TARGET_BRANCH: main
         PR_TARGET_ORG: nexmo
         PR_TARGET_REPO: nexmo-developer
         PR_TITLE: vonage-python-code-snippets Update
