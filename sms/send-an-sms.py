@@ -5,19 +5,18 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), "../.env")
 load_dotenv(dotenv_path)
 
-VONAGE_API_KEY = os.getenv("VONAGE_API_KEY")
-VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
-VONAGE_BRAND_NAME = os.getenv("VONAGE_BRAND_NAME")
+NEXMO_API_KEY = os.getenv("NEXMO_API_KEY")
+NEXMO_API_SECRET = os.getenv("NEXMO_API_SECRET")
 TO_NUMBER = os.getenv("TO_NUMBER")
+NEXMO_BRAND_NAME = os.getenv('NEXMO_BRAND_NAME')
 
-import vonage
+import nexmo
 
-client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
-sms = vonage.Sms(client)
+client = nexmo.Client(key=NEXMO_API_KEY, secret=NEXMO_API_SECRET)
 
-responseData = sms.send_message(
+responseData = client.send_message(
     {
-        "from": VONAGE_BRAND_NAME,
+        "from": NEXMO_BRAND_NAME,
         "to": TO_NUMBER,
         "text": "A text message sent using the Nexmo SMS API",
     }

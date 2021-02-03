@@ -1,18 +1,17 @@
 #Import dependencies
-import os
+import nexmo, os
 from os.path import join, dirname
 from dotenv import load_dotenv
-import vonage
 
 #Load the environment
-envpath = join(dirname(__file__), '../.env')
+envpath = join(dirname(__file__),'./.env')
 load_dotenv(envpath)
 
 #Init the client
-sms = vonage.Sms(
-    key=os.getenv('VONAGE_API_KEY'),
-    signature_secret=os.getenv('VONAGE_SIGNATURE_SECRET'),
-    signature_method='md5'
+client = nexmo.Client(
+    key = os.getenv('NEXMO_API_KEY'),
+    signature_secret = os.getenv('NEXMO_SIGNATURE_SECRET'),
+    signature_method = 'md5'
 )
 
 #Define variables - replace FROM_NUMBER and TO_NUMBER with actual numbers
@@ -21,7 +20,7 @@ to_number = os.getenv('TO_NUMBER')
 text = 'A text message sent using the Nexmo SMS API'
 
 #Sending the sms
-response = sms.send_message({
+response = client.send_message({
     "from": from_number,
     "to": to_number,
     "text": text

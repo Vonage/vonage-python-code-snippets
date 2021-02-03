@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # `eventMethod` is a required workaround currently, otherwise `/webhooks/recordings` is never called.
-from pprint import pprint
 from flask import Flask, request, jsonify
+from pprint import pprint
 
 app = Flask(__name__)
 

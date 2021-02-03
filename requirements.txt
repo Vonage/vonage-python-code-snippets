@@ -6,7 +6,7 @@ itsdangerous==0.24
 Jinja2==2.8
 MarkupSafe==0.23
 Naked==0.1.31
-vonage==2.5.3
+nexmo==2.0.0
 ordereddict==1.1
 pycrypto==2.6.1
 python-jose==1.2.0

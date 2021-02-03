@@ -1,15 +1,9 @@
-
-import os
+import nexmo
 from flask import Flask, request
-import vonage
-from dotenv import load_dotenv
-
-dotenv_path = join(dirname(__file__), "../.env")
-load_dotenv(dotenv_path)
 
 app = Flask(__name__)
 
-@app.route('/webhooks/inbound', methods=['GET', 'POST'])
+@app.route('/webhooks/inbound', methods=['GET','POST'])
 def inbound():
 
     #Get the params
@@ -17,14 +11,14 @@ def inbound():
         params = request.get_json()
     else:
         params = request.args or request.form
-
+    
     if "sig" in params:
         #Init the client, just when needed
-        client = vonage.Client(
-            key=os.getenv('VONAGE_API_KEY'),
-            secret=os.getenv('VONAGE_API_SECRET'),
-            signature_secret=os.getenv('VONAGE_SIGNATURE_SECRET'),
-            signature_method='md5'
+        client = nexmo.Client(
+            key = os.getenv('NEXMO_API_KEY'),
+            secret = os.getenv('NEXMO_API_SECRET'),
+            signature_secret = os.getenv('NEXMO_SIGNATURE_SECRET'),
+            signature_method = 'md5'
         )
         #Check signature from params
         if client.check_signature(params):
@@ -33,5 +27,5 @@ def inbound():
             print("Invalid signature")
     else:
         print("Signature not detected in params, Nothing to compare")
-
+    
     return "All OK.", 200

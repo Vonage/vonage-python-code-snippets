@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-from pprint import pprint
 from flask import Flask, request, jsonify
+from pprint import pprint
 
 app = Flask(__name__)
 
@@ -12,3 +12,4 @@ def inbound_message():
 
 if __name__ == '__main__':
     app.run(host="www.example.org", port=3000)
+
