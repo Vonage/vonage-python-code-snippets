@@ -14,5 +14,5 @@ PyYAML==5.1
 requests==2.20.0
 shellescape==3.4.1
 six==1.10.0
-Werkzeug==0.15.3
+Werkzeug>=0.15.3,<0.16
 python-dotenv==0.7.1

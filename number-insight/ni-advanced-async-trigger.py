@@ -18,7 +18,7 @@ client = vonage.Client(
 insight_number = os.getenv('INSIGHT_NUMBER')
 
 #Start the trigger
-insight_trigger_json = client.get_advanced_number_insight(
+insight_trigger_json = client.get_async_advanced_number_insight(
     number=insight_number,
     callback=os.getenv('INSIGHT_NUMBER_CALLBACK_WEBHOOK')
 )

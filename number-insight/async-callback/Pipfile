@@ -1,0 +1,13 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Flask = "==1.0"
+python-dotenv = "*"
+
+[dev-packages]
+
+[scripts]
+callbacks = "flask run"
