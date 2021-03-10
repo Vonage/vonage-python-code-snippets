@@ -23,7 +23,7 @@ voice = vonage.Voice(client)
 response = voice.create_call({
   'to': [{'type': 'phone', 'number': TO_NUMBER}],
   'from': {'type': 'phone', 'number': VONAGE_NUMBER},
-  'answer_url': ['https://developer.nexmo.com/ncco/tts.json']
+  'answer_url': ['https://raw.githubusercontent.com/nexmo-community/ncco-examples/gh-pages/text-to-speech.json']
 })
 
 pprint(response)
