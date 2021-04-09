@@ -24,7 +24,6 @@ def answer_call():
     return jsonify(ncco)
 
 
-
 @app.route("/webhooks/dtmf", methods=['POST'])
 def dtmf():
     data = request.get_json()

@@ -3,6 +3,7 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
+
 @app.route("/webhooks/answer")
 def answer_call():
     ncco = [
@@ -16,6 +17,7 @@ def answer_call():
         }
     ]
     return jsonify(ncco)
+
 
 if __name__ == '__main__':
     app.run(port=3000)
