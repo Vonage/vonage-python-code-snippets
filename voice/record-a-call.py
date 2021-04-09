@@ -4,6 +4,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+
 @app.route("/webhooks/answer")
 def answer_call():
     ncco = [
@@ -29,11 +30,13 @@ def answer_call():
     ]
     return jsonify(ncco)
 
+
 @app.route("/webhooks/recordings", methods=['POST'])
 def recordings():
     data = request.get_json()
     pprint(data)
     return "webhook received"
+
 
 if __name__ == '__main__':
     app.run(port=3000)
