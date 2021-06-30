@@ -17,6 +17,7 @@ def answer_call():
         },
         {
             "action": "input",
+            "type": ["dtmf"],
             "maxDigits": 1,
             "eventUrl": [input_webhook_url]
         }
