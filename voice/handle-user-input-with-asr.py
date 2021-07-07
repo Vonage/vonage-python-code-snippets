@@ -10,6 +10,7 @@ def answer_call():
         {"action": "talk", "text": "Please, tell me something",},
         {
             "action": "input",
+            "type": ["speech"],
             "eventUrl": [
                 "{host}{endpoint}".format(
                     host=request.host_url, endpoint="webhooks/asr"
