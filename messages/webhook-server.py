@@ -4,17 +4,20 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-@app.route("/webhooks/inbound-message", methods=['POST'])
+
+@app.route("/webhooks/inbound-message", methods=["POST"])
 def inbound_message():
     data = request.get_json()
     pprint(data)
     return "200"
 
-@app.route("/webhooks/message-status", methods=['POST'])
+
+@app.route("/webhooks/message-status", methods=["POST"])
 def message_status():
     data = request.get_json()
     pprint(data)
     return "200"
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run(host="www.example.org", port=3000)
