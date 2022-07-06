@@ -3,6 +3,7 @@ import os
 from os.path import join, dirname
 import vonage
 from dotenv import load_dotenv
+import time
 
 # Load the environment
 envpath = join(dirname(__file__), './.env')
@@ -24,9 +25,20 @@ response = voice.create_call({
         {
             "action": "talk",
             "text": "This is just a text whilst you tranfer to another NCCO"
+        },
+        # Play hold music until the call is transferred
+        {
+            "action": "stream",
+            "streamUrl": [
+                "https://example.com/hold-music.mp3"
+            ],
+            "loop": "0"
         }
     ]
 })
+
+# Give the recipient time to answer 
+time.sleep(5)
 
 response = voice.update_call(
     response["uuid"], {
