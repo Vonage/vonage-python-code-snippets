@@ -20,7 +20,7 @@ new_api_secret = os.getenv("NEW_API_SECRET")
 
 # Create the secret
 try:
-    response = client.create_secret(api_key, new_api_secret)
+    response = client.account.create_secret(api_key, new_api_secret)
     if "id" in response:
         print(
             "Secret was created\nId: {}\nCreated at: {}\nLinks: {}".format(

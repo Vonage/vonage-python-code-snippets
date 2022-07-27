@@ -2,7 +2,7 @@ import argparse
 import os
 from os.path import join, dirname
 from dotenv import load_dotenv
-from vonage import Client, Verify
+import vonage
 
 dotenv_path = join(dirname(__file__), "../.env")
 load_dotenv(dotenv_path)
@@ -16,10 +16,9 @@ arguments = argument_parser.parse_args()
 
 REQUEST_ID = arguments.request_id
 
-client = Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
+client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
 
-verify = Verify(client)
-response = verify.trigger_next_event(REQUEST_ID)
+response = client.verify.trigger_next_event(REQUEST_ID)
 
 if response["status"] == "0":
     print("Next verification stage triggered")

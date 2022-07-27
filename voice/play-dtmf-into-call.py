@@ -15,6 +15,4 @@ client = vonage.Client(
     private_key=VONAGE_APPLICATION_PRIVATE_KEY_PATH,
 )
 
-voice = vonage.Voice(client)
-
-voice.send_dtmf(VONAGE_CALL_UUID, digits='1234')
+client.voice.send_dtmf(VONAGE_CALL_UUID, digits='1234')

@@ -17,6 +17,6 @@ client = vonage.Client(
     secret=VONAGE_API_SECRET
 )
 
-response = client.application_v2.delete_application(VONAGE_APPLICATION_ID)
+response = client.application.delete_application(VONAGE_APPLICATION_ID)
 
 pprint(response)

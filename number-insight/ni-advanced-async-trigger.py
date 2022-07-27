@@ -18,17 +18,17 @@ client = vonage.Client(
 insight_number = os.getenv('INSIGHT_NUMBER')
 
 #Start the trigger
-insight_trigger_json = client.get_async_advanced_number_insight(
+insight_trigger_json = client.number_insight.get_async_advanced_number_insight(
     number=insight_number,
     callback=os.getenv('INSIGHT_NUMBER_CALLBACK_WEBHOOK')
 )
 
-#If you are in love with the json format you can use the variant below
-'''insight_trigger_json = client.get_advanced_number_insight({
+# You can also pass in JSON
+'''insight_trigger_json = client.number_insight.get_async_advanced_number_insight({
     "number": insight_number,
     "callback": os.getenv('INSIGHT_NUMBER_CALLBACK_WEBHOOK')
 })
 '''
 
-#Get the response from api - the data will be available on callback webhook
+# Get the response from api - the data will be available on callback webhook
 pprint(insight_trigger_json)

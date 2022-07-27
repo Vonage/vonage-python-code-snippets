@@ -16,7 +16,7 @@ try:
     # Get the data from standard input
     api_key = os.getenv("VONAGE_API_KEY")
     secret_id = os.getenv("VONAGE_SECRET_ID")
-    client.delete_secret(api_key, secret_id)
+    client.account.delete_secret(api_key, secret_id)
     print("Secret removed")
 except:
     print("Error when try to removing secret")

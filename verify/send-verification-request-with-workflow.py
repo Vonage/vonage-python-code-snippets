@@ -1,5 +1,4 @@
 import os
-import os
 from os.path import join, dirname
 from dotenv import load_dotenv
 import vonage
@@ -14,9 +13,8 @@ BRAND_NAME = os.getenv("BRAND_NAME")
 WORKFLOW_ID = os.getenv("WORKFLOW_ID")
 
 client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
-verify = vonage.Verify(client)
 
-response = verify.start_verification(
+response = client.verify.start_verification(
     number=RECIPIENT_NUMBER, brand=BRAND_NAME, workflow_id=WORKFLOW_ID
 )
 

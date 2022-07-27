@@ -14,7 +14,7 @@ import vonage
 
 client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
 
-responseData = client.get_account_numbers(
+responseData = client.numbers.get_account_numbers(
     {"pattern": NUMBER_SEARCH_CRITERIA, "search_pattern": NUMBER_SEARCH_PATTERN}
 )
 

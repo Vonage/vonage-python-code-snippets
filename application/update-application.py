@@ -17,7 +17,7 @@ client = vonage.Client(
     secret=VONAGE_API_SECRET
 )
 
-response = client.application_v2.update_application(VONAGE_APPLICATION_ID, {
+response = client.application.update_application(VONAGE_APPLICATION_ID, {
   "name": "Python Update App",
   "capabilities": {
     "messages": {

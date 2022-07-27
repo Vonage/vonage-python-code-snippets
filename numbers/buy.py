@@ -15,7 +15,7 @@ import vonage
 client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
 
 try:
-    response = client.buy_number({"country": COUNTRY_CODE, "msisdn": VONAGE_NUMBER})
+    response = client.numbers.buy_number({"country": COUNTRY_CODE, "msisdn": VONAGE_NUMBER})
     print("Number purchased")
 except Exception as exc:
     print("Error purchasing number", exc)

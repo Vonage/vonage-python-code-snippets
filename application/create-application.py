@@ -17,7 +17,7 @@ client = vonage.Client(
     secret=VONAGE_API_SECRET
 )
 
-response = client.application_v2.create_application({
+response = client.application.create_application({
     "name": "Code Example App",
     "capabilities": {
         "messages": {

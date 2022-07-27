@@ -9,7 +9,7 @@ envpath = join(dirname(__file__), '../.env')
 load_dotenv(envpath)
 
 #Init the client
-sms = vonage.Sms(
+client = vonage.Client(
     key=os.getenv('VONAGE_API_KEY'),
     signature_secret=os.getenv('VONAGE_SIGNATURE_SECRET'),
     signature_method='md5'
@@ -21,7 +21,7 @@ to_number = os.getenv('TO_NUMBER')
 text = 'A text message sent using the Nexmo SMS API'
 
 #Sending the sms
-response = sms.send_message({
+response = client.sms.send_message({
     "from": from_number,
     "to": to_number,
     "text": text

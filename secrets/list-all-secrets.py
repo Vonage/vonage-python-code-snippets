@@ -11,6 +11,6 @@ API_KEY = os.environ.get("VONAGE_API_KEY")
 VONAGE_API_SECRET = os.environ.get("VONAGE_API_SECRET")
 client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
 
-secrets = client.list_secrets(api_key=API_KEY)
+secrets = client.account.list_secrets(api_key=API_KEY)
 for secret in secrets["_embedded"]["secrets"]:
     print(secret["id"] + ": Created on " + secret["created_at"])

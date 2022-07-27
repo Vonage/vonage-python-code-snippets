@@ -15,6 +15,4 @@ client = vonage.Client(
     private_key=VONAGE_APPLICATION_PRIVATE_KEY_PATH,
 )
 
-voice = vonage.Voice(client)
-
-voice.send_speech(VONAGE_CALL_UUID, text='Hello from Vonage')
+client.voice.send_speech(VONAGE_CALL_UUID, text='Hello from Vonage')
