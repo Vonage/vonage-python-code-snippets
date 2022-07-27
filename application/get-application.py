@@ -16,6 +16,6 @@ client = vonage.Client(
     secret=VONAGE_API_SECRET
 )
 
-response = client.application_v2.get_application(VONAGE_APPLICATION_ID)
+response = client.application.get_application(VONAGE_APPLICATION_ID)
 
 pprint(response)

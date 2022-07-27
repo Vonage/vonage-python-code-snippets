@@ -16,6 +16,6 @@ client = vonage.Client(
     private_key=VONAGE_APPLICATION_PRIVATE_KEY_PATH,
 )
 
-response = client.get_recording(URL)
+response = client.get_recording("RECORDING_URL")
 pprint(response)
 

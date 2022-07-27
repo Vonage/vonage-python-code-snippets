@@ -13,5 +13,5 @@ SMS_CALLBACK_URL = os.getenv('SMS_CALLBACK_URL')
 
 client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
 
-result = client.update_settings({'moCallBackUrl':SMS_CALLBACK_URL})
+result = client.account.update_default_sms_webhook({'moCallBackUrl':SMS_CALLBACK_URL})
 pprint(result)

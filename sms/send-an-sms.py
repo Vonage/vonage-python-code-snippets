@@ -13,9 +13,8 @@ TO_NUMBER = os.getenv("TO_NUMBER")
 import vonage
 
 client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
-sms = vonage.Sms(client)
 
-responseData = sms.send_message(
+responseData = client.sms.send_message(
     {
         "from": VONAGE_BRAND_NAME,
         "to": TO_NUMBER,

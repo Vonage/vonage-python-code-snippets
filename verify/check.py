@@ -18,9 +18,9 @@ arguments = argument_parser.parse_args()
 REQUEST_ID = arguments.request_id
 CODE = arguments.verification_code
 
-verify = vonage.Verify(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
+client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
 
-response = verify.check(REQUEST_ID, code=CODE)
+response = client.verify.check(REQUEST_ID, code=CODE)
 
 if response["status"] == "0":
     print("Verification successful, event_id is %s" % (response["event_id"]))

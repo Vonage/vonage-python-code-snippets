@@ -20,7 +20,7 @@ import vonage
 client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
 
 try:
-    response = client.update_number(
+    response = client.numbers.update_number(
         {
             "msisdn": VONAGE_NUMBER,
             "country": COUNTRY_CODE,

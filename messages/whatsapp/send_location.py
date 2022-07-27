@@ -9,7 +9,7 @@ VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get("VONAGE_APPLICATION_PRIVATE_KEY_PATH")
 
 TO_NUMBER = os.environ.get("TO_NUMBER")
-VONAGE_NUMBER = os.environ.get("FROM_NUMBER")
+FROM_NUMBER = os.environ.get("FROM_NUMBER")
 
 import vonage
 
@@ -23,7 +23,7 @@ client.messages.send_message(
         "channel": "whatsapp",
         "message_type": "custom",
         "to": TO_NUMBER,
-        "from": VONAGE_NUMBER,
+        "from": FROM_NUMBER,
         "custom": {
             "type": "location",
             "location": {

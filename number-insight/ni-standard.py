@@ -14,5 +14,5 @@ import vonage
 
 client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
 
-insight_json = client.get_standard_number_insight(number=INSIGHT_NUMBER)
+insight_json = client.number_insight.get_standard_number_insight(number=INSIGHT_NUMBER)
 pprint(insight_json)

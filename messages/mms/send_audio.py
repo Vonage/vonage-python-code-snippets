@@ -9,7 +9,7 @@ VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get("VONAGE_APPLICATION_PRIVATE_KEY_PATH")
 
 TO_NUMBER = os.environ.get("TO_NUMBER")
-VONAGE_NUMBER = os.environ.get("FROM_NUMBER")
+FROM_NUMBER = os.environ.get("FROM_NUMBER")
 
 import vonage
 
@@ -23,7 +23,7 @@ client.messages.send_message(
         "channel": "mms",
         "message_type": "audio",
         "to": TO_NUMBER,
-        "from": VONAGE_NUMBER,
+        "from": FROM_NUMBER,
         "audio": {
             "url": "https://www.example.com/audio.mp3",
             "caption": "Test audio file sent via MMS with Vonage's Messages API",

@@ -17,7 +17,7 @@ import vonage
 
 client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
 
-responseData = client.get_available_numbers(
+responseData = client.numbers.get_available_numbers(
     COUNTRY_CODE,
     {
         "pattern": NUMBER_SEARCH_CRITERIA,

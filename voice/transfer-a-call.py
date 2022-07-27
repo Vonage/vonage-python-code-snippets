@@ -17,8 +17,6 @@ client = vonage.Client(
     private_key=VONAGE_APPLICATION_PRIVATE_KEY_PATH,
 )
 
-voice = vonage.Voice(client)
-
 dest = {"type": "ncco", "url": ["https://raw.githubusercontent.com/nexmo-community/ncco-examples/gh-pages/text-to-speech.json"]}
-response = voice.update_call(UUID, action="transfer", destination=dest)
+response = client.voice.update_call(UUID, action="transfer", destination=dest)
 pprint(response)

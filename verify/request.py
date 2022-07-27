@@ -11,9 +11,8 @@ VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
 RECIPIENT_NUMBER = os.getenv("RECIPIENT_NUMBER")
 
 client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
-verify = vonage.Verify(client)
 
-response = verify.start_verification(number=RECIPIENT_NUMBER, brand="AcmeInc")
+response = client.verify.start_verification(number=RECIPIENT_NUMBER, brand="AcmeInc")
 
 if response["status"] == "0":
     print("Started verification request_id is %s" % (response["request_id"]))

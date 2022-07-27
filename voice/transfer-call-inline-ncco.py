@@ -16,9 +16,7 @@ client = vonage.Client(
     private_key=os.getenv("VONAGE_PRIVATE_KEY")
 )
 
-voice = vonage.Voice(client)
-
-response = voice.create_call({
+response = client.voice.create_call({
     "to": [{"type": "phone", "number": os.getenv('TO_NUMBER')}],
     "from": {"type": "phone", "number": os.getenv('FROM_NUMBER')},
     "ncco": [
@@ -40,7 +38,7 @@ response = voice.create_call({
 # Give the recipient time to answer 
 time.sleep(5)
 
-response = voice.update_call(
+response = client.voice.update_call(
     response["uuid"], {
         "action": "transfer",
         "destination": {

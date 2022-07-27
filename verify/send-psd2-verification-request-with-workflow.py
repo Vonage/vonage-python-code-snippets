@@ -1,5 +1,4 @@
 import os
-import os
 from os.path import join, dirname
 from dotenv import load_dotenv
 import vonage
@@ -15,9 +14,8 @@ PAYEE = os.environ.get("PAYEE")
 AMOUNT = os.environ.get("AMOUNT")
 
 client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
-verify = vonage.Verify(client)
 
-response = verify.psd2(
+response = client.verify.psd2(
     number=RECIPIENT_NUMBER, payee=PAYEE, amount=AMOUNT, workflow_id=WORKFLOW_ID
 )
 
