@@ -30,9 +30,9 @@ client.messages.send_message(
         "template": {
             "name": f"{WHATSAPP_TEMPLATE_NAMESPACE}:{WHATSAPP_TEMPLATE_NAME}",
             "parameters": [
-                {"default": "Vonage Verification"},
-                {"default": "64873"},
-                {"default": "10"},
+                "Vonage Verification",
+                "64873",
+                "10",
             ],
         },
         "whatsapp": {"policy": "deterministic", "locale": "en-GB"},
