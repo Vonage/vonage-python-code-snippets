@@ -1,4 +1,4 @@
-# Nexmo Code Snippets for Python
+# Vonage Code Snippets for Python
 
 ![Author](https://img.shields.io/badge/author-Vonage-orange)
 ![Issues](https://img.shields.io/github/issues/Vonage/vonage-python-code-snippets)
@@ -19,9 +19,9 @@ or making a Text to Speech call.
 
 ## Setup
 
-These code samples are meant to be used for [https://developer.nexmo.com/](https://developer.nexmo.com/), and are structured in such a way as to be used for internal testing. Developers are free to use these code snippets as a reference, but these may require changes to be worked into your specific application. We recommend checking out the [Nexmo Developer Website](https://developer.nexmo.com/), which displays these code snippets in a more copy/paste fashion.
+These code samples are meant to be used for [https://developer.vonage.com/](https://developer.vonage.com/), and are structured in such a way as to be used for internal testing. Developers are free to use these code snippets as a reference, but these may require changes to be worked into your specific application. We recommend checking out the [Vonage Developer Website](https://developer.vonage.com/), which displays these code snippets in a more copy/paste fashion.
 
-To use the examples, you will first need a [Nexmo account][sign-up]. Then rename
+To use the examples, you will first need a [Vonage account][sign-up]. Then rename
 the `example.env` file to `.env` and set the values as required.
 
 For some of the examples you will need to [buy a number][buy-number].
