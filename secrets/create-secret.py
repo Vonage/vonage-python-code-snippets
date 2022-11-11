@@ -32,5 +32,5 @@ try:
 except:
     print(
         "Error: Secret does not meet complexity requirements. Please check the link below for more details:\n",
-        "https://developer.nexmo.com/api-errors/account/secret-management#validation",
+        "https://developer.vonage.com/api-errors/account/secret-management#validation",
     )

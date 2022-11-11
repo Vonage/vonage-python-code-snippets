@@ -18,7 +18,7 @@ client = vonage.Client(
 #Define variables - replace FROM_NUMBER and TO_NUMBER with actual numbers
 from_number = os.getenv('FROM_NUMBER')
 to_number = os.getenv('TO_NUMBER')
-text = 'A text message sent using the Nexmo SMS API'
+text = 'A text message sent using the Vonage SMS API'
 
 #Sending the sms
 response = client.sms.send_message({
