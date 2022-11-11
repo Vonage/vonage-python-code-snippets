@@ -18,9 +18,7 @@ client = vonage.Client(
     private_key=VONAGE_APPLICATION_PRIVATE_KEY_PATH,
 )
 
-voice = vonage.Voice(client)
-
-response = voice.create_call({
+response = client.voice.create_call({
   'to': [{'type': 'phone', 'number': TO_NUMBER}],
   'from': {'type': 'phone', 'number': FROM_NUMBER},
   'answer_url': ['https://raw.githubusercontent.com/nexmo-community/ncco-examples/gh-pages/text-to-speech.json']
