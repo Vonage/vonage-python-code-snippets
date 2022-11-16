@@ -4,16 +4,11 @@ This quick demo shows how to verify an incoming SMS signature
 
 ### Setup
 
-Install using either `pipenv` or `virtualenv`, and then set up the webhooks.
+Install inside a virtual environment and then set up the webhooks.
 
-#### `pipenv`
-1. Run `pipenv install`
-1. Copy `.env.dist` to `.env` and fill in your credentials
-1. Run `pipenv run flask`
-
-#### `virtualenv`
-1. Run `virtualenv env`
-1. Run `source env/bin/activate`
+#### Create a virtual environment
+1. Run `python3 -m venv venv`
+1. Run `source venv/bin/activate`
 1. Run `pip install -r requirements.txt`
 1. Copy `.env.dist` to `.env` and fill in your credentials
 1. Run `flask run`
