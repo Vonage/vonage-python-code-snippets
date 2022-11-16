@@ -1,8 +1,8 @@
-name: Push to Master
+name: Push to main
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build:
     name: Update NDP Submodule
@@ -12,7 +12,7 @@ jobs:
       uses: nexmo/github-actions/submodule-auto-pr@main
       env:
         GH_ADMIN_TOKEN: ${{ secrets.PDX_GH_TOKEN }}
-        PR_ACTIVE_BRANCH: master
+        PR_ACTIVE_BRANCH: main
         PR_BRANCH_NAME: automated-python-snippets-update
         PR_SUBMODULE_PATH: .repos/vonage/vonage-python-code-snippets
         PR_TARGET_BRANCH: main
