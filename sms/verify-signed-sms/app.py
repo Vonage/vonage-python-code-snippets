@@ -1,12 +1,6 @@
-import os
-from os.path import join, dirname
-from dotenv import load_dotenv
-from flask import Flask, request
 import vonage
-
-#Load the environment
-envpath = join(dirname(__file__), '../.env')
-load_dotenv(envpath)
+import os
+from flask import Flask, request
 
 VONAGE_API_KEY = os.getenv("VONAGE_API_KEY")
 VONAGE_SIGNATURE_SECRET = os.getenv("VONAGE_SIGNATURE_SECRET")
@@ -28,4 +22,4 @@ def callback():
     return "Hello, world"
 
 if __name__ == "__main__":
-    app.run(load_dotenv=True)
+    app.run()
