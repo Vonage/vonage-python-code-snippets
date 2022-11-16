@@ -12,7 +12,7 @@ load_dotenv(envpath)
 client = vonage.Client(
     key=os.getenv('VONAGE_API_KEY'),
     signature_secret=os.getenv('VONAGE_SIGNATURE_SECRET'),
-    signature_method='md5'
+    signature_method='sha512'
 )
 
 #Define variables - replace FROM_NUMBER and TO_NUMBER with actual numbers
