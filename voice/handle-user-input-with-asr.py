@@ -19,7 +19,7 @@ def answer_call():
             "speech": {
                 "endOnSilence": 1,
                 "language": "en-US",
-                "uuid": [request.args.get("uuid")],
+                "uuid": [request.args.get("uuid")], # Change to request.json.get("uuid") if using POST-JSON webhook format
             },
         },
     ]
