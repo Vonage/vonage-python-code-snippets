@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-Flask = "==1.0"
+Flask = "*"
 python-dotenv = "*"
 
 [dev-packages]
