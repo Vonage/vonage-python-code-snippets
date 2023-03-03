@@ -29,5 +29,5 @@ shellescape==3.8.1
 six==1.16.0
 urllib3==1.26.5
 vonage>=3.1.0
-Werkzeug==2.2.2
+Werkzeug==2.2.3
 wrapt==1.14.1
