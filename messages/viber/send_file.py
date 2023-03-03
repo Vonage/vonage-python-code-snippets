@@ -22,8 +22,8 @@ client.messages.send_message(
     {
         'channel': 'viber_service',
         'message_type': 'file',
-        'to': '44123456789',
-        'from': 'vonage',
+        'to': TO_NUMBER,
+        'from': FROM_NUMBER,
         'video': {'url': 'https://example.com/files', 'name': 'example.pdf'},
         'viber_service': {'category': 'transaction', 'ttl': 600, 'type': 'string'},
     }

@@ -22,8 +22,8 @@ client.messages.send_message(
     {
         'channel': 'viber_service',
         'message_type': 'video',
-        'to': '44123456789',
-        'from': 'vonage',
+        'to': TO_NUMBER,
+        'from': FROM_NUMBER,
         'video': {
             'url': 'https://example.com/video.mp4',
             'caption': 'Look at this video',
