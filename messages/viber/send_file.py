@@ -9,7 +9,7 @@ VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get("VONAGE_APPLICATION_PRIVATE_KEY_PATH")
 
 TO_NUMBER = os.environ.get("TO_NUMBER")
-WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER")
+VIBER_SERVICE_MESSAGE_ID = os.environ.get("VIBER_SERVICE_MESSAGE_ID")
 
 import vonage
 
@@ -20,18 +20,11 @@ client = vonage.Client(
 
 client.messages.send_message(
     {
-        "channel": "whatsapp",
-        "message_type": "custom",
-        "to": TO_NUMBER,
-        "from": WHATSAPP_NUMBER,
-        "custom": {
-            "type": "location",
-            "location": {
-                "longitude": -122.425332,
-                "latitude": 37.758056,
-                "name": "Facebook HQ",
-                "address": "1 Hacker Way, Menlo Park, CA 94025",
-            },
-        },
+        'channel': 'viber_service',
+        'message_type': 'file',
+        'to': TO_NUMBER,
+        'from': VIBER_SERVICE_MESSAGE_ID,
+        'file': {'url': 'https://example.com/files', 'name': 'example.pdf'},
+        'viber_service': {'category': 'transaction', 'ttl': 600, 'type': 'string'},
     }
 )

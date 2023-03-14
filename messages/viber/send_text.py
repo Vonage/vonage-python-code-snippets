@@ -9,7 +9,7 @@ VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get("VONAGE_APPLICATION_PRIVATE_KEY_PATH")
 
 TO_NUMBER = os.environ.get("TO_NUMBER")
-FROM_NUMBER = os.environ.get("FROM_NUMBER")
+VIBER_SERVICE_MESSAGE_ID = os.environ.get("VIBER_SERVICE_MESSAGE_ID")
 
 import vonage
 
@@ -23,7 +23,7 @@ client.messages.send_message(
         "channel": "viber_service",
         "message_type": "text",
         "to": TO_NUMBER,
-        "from": FROM_NUMBER,
+        "from": VIBER_SERVICE_MESSAGE_ID,
         "text": "This is a Viber Service Message text message sent using the Messages API",
     }
 )

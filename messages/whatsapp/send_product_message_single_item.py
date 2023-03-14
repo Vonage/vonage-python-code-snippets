@@ -11,6 +11,9 @@ VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get("VONAGE_APPLICATION_PRIVATE
 TO_NUMBER = os.environ.get("TO_NUMBER")
 WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER")
 
+CATALOG_ID = os.environ.get('CATALOG_ID')
+PRODUCT_RETAILER_ID = os.environ.get('PRODUCT_RETAILER_ID')
+
 import vonage
 
 client = vonage.Client(
@@ -20,17 +23,17 @@ client = vonage.Client(
 
 client.messages.send_message(
     {
-        "channel": "whatsapp",
-        "message_type": "custom",
-        "to": TO_NUMBER,
-        "from": WHATSAPP_NUMBER,
-        "custom": {
-            "type": "location",
-            "location": {
-                "longitude": -122.425332,
-                "latitude": 37.758056,
-                "name": "Facebook HQ",
-                "address": "1 Hacker Way, Menlo Park, CA 94025",
+        'to': TO_NUMBER,
+        'from': WHATSAPP_NUMBER,
+        'channel': 'whatsapp',
+        'message_type': 'custom',
+        'custom': {
+            'type': 'interactive',
+            'interactive': {
+                'type': 'product',
+                'body': {'text' 'Check out this cool product'},
+                'footer': {'text': 'Sale now on!'},
+                'action': {'catalog_id': CATALOG_ID, 'product_retailer_id': PRODUCT_RETAILER_ID},
             },
         },
     }
