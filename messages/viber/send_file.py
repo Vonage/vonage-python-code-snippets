@@ -24,7 +24,7 @@ client.messages.send_message(
         'message_type': 'file',
         'to': TO_NUMBER,
         'from': VIBER_SERVICE_MESSAGE_ID,
-        'video': {'url': 'https://example.com/files', 'name': 'example.pdf'},
+        'file': {'url': 'https://example.com/files', 'name': 'example.pdf'},
         'viber_service': {'category': 'transaction', 'ttl': 600, 'type': 'string'},
     }
 )
