@@ -7,7 +7,8 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get('VONAGE_APPLICATION_ID')
 VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get('VONAGE_APPLICATION_PRIVATE_KEY_PATH')
-ROOM_DISPLAY_NAME = os.environ.get('ROOM_DISPLAY_NAME')
+MAIN_COLOR = os.environ.get('MAIN_COLOR')
+BRAND_TEXT = os.environ.get('BRAND_TEXT')
 
 import vonage
 
@@ -16,4 +17,9 @@ client = vonage.Client(
     private_key=VONAGE_APPLICATION_PRIVATE_KEY_PATH,
 )
 
-response = client.meetings.create_room({'display_name': ROOM_DISPLAY_NAME})
+response = client.meetings.create_theme(
+    {
+        'main_color': MAIN_COLOR,
+        'brand_text': BRAND_TEXT,
+    }
+)
