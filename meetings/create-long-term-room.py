@@ -1,4 +1,5 @@
 import os
+from datetime import datetime, timedelta
 from os.path import join, dirname
 from dotenv import load_dotenv
 
@@ -7,8 +8,9 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get('VONAGE_APPLICATION_ID')
 VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get('VONAGE_APPLICATION_PRIVATE_KEY_PATH')
+
 ROOM_DISPLAY_NAME = os.environ.get('ROOM_DISPLAY_NAME')
-EXPIRATION_DATE = '2023-01-30T00:47:04+0000'
+EXPIRATION_DATE = (datetime.utcnow() + timedelta(days=30)).isoformat()
 
 import vonage
 
