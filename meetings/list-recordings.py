@@ -7,7 +7,7 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get('VONAGE_APPLICATION_ID')
 VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get('VONAGE_APPLICATION_PRIVATE_KEY_PATH')
-ROOM_DISPLAY_NAME = os.environ.get('ROOM_DISPLAY_NAME')
+SESSION_ID = os.environ.get('SESSION_ID')
 
 import vonage
 
@@ -16,4 +16,4 @@ client = vonage.Client(
     private_key=VONAGE_APPLICATION_PRIVATE_KEY_PATH,
 )
 
-response = client.meetings.create_room({'display_name': ROOM_DISPLAY_NAME})
+response = client.meetings.get_session_recordings(SESSION_ID)

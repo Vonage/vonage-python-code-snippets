@@ -7,7 +7,8 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get('VONAGE_APPLICATION_ID')
 VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get('VONAGE_APPLICATION_PRIVATE_KEY_PATH')
-ROOM_DISPLAY_NAME = os.environ.get('ROOM_DISPLAY_NAME')
+ROOM_ID = os.environ.get('ROOM_ID')
+THEME_ID = os.environ.get('THEME_ID')
 
 import vonage
 
@@ -16,4 +17,5 @@ client = vonage.Client(
     private_key=VONAGE_APPLICATION_PRIVATE_KEY_PATH,
 )
 
-response = client.meetings.create_room({'display_name': ROOM_DISPLAY_NAME})
+params = {'update_details': {'theme_id': THEME_ID}}
+response = client.meetings.update_room(ROOM_ID, params)

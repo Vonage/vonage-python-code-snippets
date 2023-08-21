@@ -22,7 +22,7 @@ or making a Text to Speech call.
 These code samples are meant to be used for [https://developer.vonage.com/](https://developer.vonage.com/), and are structured in such a way as to be used for internal testing. Developers are free to use these code snippets as a reference, but these may require changes to be worked into your specific application. We recommend checking out the [Vonage Developer Website](https://developer.vonage.com/), which displays these code snippets in a more copy/paste fashion.
 
 To use the examples, you will first need a [Vonage account][sign-up]. Then rename
-the `example.env` file to `.env` and set the values as required.
+the `.env.dist` file to `.env` and set the values as required.
 
 For some of the examples you will need to [buy a number][buy-number].
 
