@@ -6,7 +6,6 @@
 ![Stars](https://img.shields.io/github/stars/Vonage/vonage-python-code-snippets)
 ![Forks](https://img.shields.io/github/forks/Vonage/vonage-python-code-snippets)
 ![Last Commit](https://img.shields.io/github/last-commit/Vonage/vonage-python-code-snippets)
-![Maintained](https://img.shields.io/maintenance/yes/2020)
 ![Size](https://img.shields.io/github/repo-size/Vonage/vonage-python-code-snippets)
 
 <img src="https://developer.nexmo.com/assets/images/Vonage_Nexmo.svg" height="48px" alt="Nexmo is now known as Vonage" />
