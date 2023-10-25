@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 Flask = "*"
 python-dotenv = "*"
-pyjwt = {extras = ["crypto"], version = "*"}
+vonage_jwt = "*"
 
 [dev-packages]
 
