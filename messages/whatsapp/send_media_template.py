@@ -11,39 +11,37 @@ VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get("VONAGE_APPLICATION_PRIVATE
 TO_NUMBER = os.environ.get("TO_NUMBER")
 WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER")
 
-WHATSAPP_TEMPLATE_NAMESPACE = os.environ.get("WHATSAPP_TEMPLATE_NAMESPACE")
 WHATSAPP_TEMPLATE_NAME = os.environ.get("WHATSAPP_TEMPLATE_NAME")
+IMAGE_URL = os.environ.get("IMAGE_URL")
+WHATSAPP_TEMPLATE_REPLACEMENT_TEXT = os.environ.get("WHATSAPP_TEMPLATE_REPLACEMENT_TEXT")
 
 MEDIA_TEMPLATE = {
     "type": "template",
     "template": {
-        "namespace": WHATSAPP_TEMPLATE_NAMESPACE,
         "name": WHATSAPP_TEMPLATE_NAME,
         "language": {"policy": "deterministic", "code": "en"},
         "components": [
+        {
+          "type": "header",
+          "parameters": [
             {
-                "type": "header",
-                "parameters": [
-                    {
-                        "type": "location",
-                        "location": {
-                            "longitude": -122.425332,
-                            "latitude": 37.758056,
-                            "name": "Facebook HQ",
-                            "address": "1 Hacker Way, Menlo Park, CA 94025",
-                        },
-                    }
-                ],
+              "type": "image",
+              "image": {
+                "link": IMAGE_URL,
+              }
             },
+          ]
+        },
+        {
+          "type": "body",
+          "parameters": [
             {
-                "type": "body",
-                "parameters": [
-                    "Value 1",
-                    "Value 2",
-                    "Value 3",
-                ],
-            },
-        ],
+              "type": "text",
+              "text": WHATSAPP_TEMPLATE_REPLACEMENT_TEXT
+            }
+          ]
+        }
+      ],
     },
 }
 
