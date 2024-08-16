@@ -21,7 +21,7 @@ python-dotenv==0.21.0
 python-jose==3.3.0
 pytz==2022.6
 PyYAML==6.0
-requests==2.31.0
+requests==2.32.2
 rsa==4.9
 shellescape==3.8.1
 six==1.16.0
