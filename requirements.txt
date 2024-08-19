@@ -1,5 +1,5 @@
 annotated-types==0.7.0
-black==22.6.0
+black==24.3.0
 blinker==1.8.2
 certifi==2024.7.4
 cffi==1.17.0
