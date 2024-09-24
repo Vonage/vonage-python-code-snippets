@@ -6,7 +6,7 @@ cffi==1.17.0
 chardet==5.2.0
 charset-normalizer==3.3.2
 click==8.1.7
-cryptography==43.0.0
+cryptography==43.0.1
 Deprecated==1.2.14
 distlib==0.3.6
 ecdsa==0.19.0
