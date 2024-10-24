@@ -8,17 +8,12 @@
 ![Last Commit](https://img.shields.io/github/last-commit/Vonage/vonage-python-code-snippets)
 ![Size](https://img.shields.io/github/repo-size/Vonage/vonage-python-code-snippets)
 
-<img src="https://developer.nexmo.com/assets/images/Vonage_Nexmo.svg" height="48px" alt="Nexmo is now known as Vonage" />
-
-Code snippets also available for: [Java](https://github.com/nexmo/nexmo-java-code-snippets), [.NET](https://github.com/nexmo/nexmo-dotnet-code-snippets), [Node.js](https://github.com/nexmo/nexmo-node-code-snippets), [PHP](https://github.com/nexmo/nexmo-php-code-snippets), [Ruby](https://github.com/nexmo/nexmo-ruby-code-snippets), [Curl](https://github.com/Nexmo/nexmo-curl-code-snippets), [Go](https://github.com/Vonage/vonage-go-code-snippets) and [Android](https://github.com/nexmo-community/quickstart-android)
-
-The purpose of the Code Snippets is to provide simple examples focused
-on one goal. For example, sending an SMS, handling an incoming SMS webhook,
-or making a Text to Speech call.
+The purpose of these Code Snippets is to provide simple examples focused
+on one goal. For example, sending an SMS, creating a Vonage Video API session, handling an incoming webhook, or making a Text-to-Speech call.
 
 ## Setup
 
-These code samples are meant to be used for [https://developer.vonage.com/](https://developer.vonage.com/), and are structured in such a way as to be used for internal testing. Developers are free to use these code snippets as a reference, but these may require changes to be worked into your specific application. We recommend checking out the [Vonage Developer Website](https://developer.vonage.com/), which displays these code snippets in a more copy/paste fashion.
+These code samples are meant to be embedded into pages on [https://developer.vonage.com/](https://developer.vonage.com/). Developers are free to use these code snippets as a reference, but these may require changes to be worked into your specific application. We recommend checking out the [Vonage Developer Website](https://developer.vonage.com/), which displays these code snippets in a more copy/paste fashion.
 
 To use the examples, you will first need a [Vonage account][sign-up]. Then rename
 the `.env.dist` file to `.env` and set the values as required.
