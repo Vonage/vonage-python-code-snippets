@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 import os
 from os.path import join, dirname
-from pprint import pprint
 from dotenv import load_dotenv
-import vonage
-
 
 dotenv_path = join(dirname(__file__), "../.env")
 load_dotenv(dotenv_path)
@@ -12,11 +9,13 @@ load_dotenv(dotenv_path)
 VONAGE_API_KEY = os.getenv('VONAGE_API_KEY')
 VONAGE_API_SECRET = os.getenv('VONAGE_API_SECRET')
 
-client = vonage.Client(
-    key=VONAGE_API_KEY,
-    secret=VONAGE_API_SECRET
+from vonage import Auth, Vonage
+from vonage_application import ListApplicationsFilter
+
+client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
+
+applications, next_page = client.application.list_applications(
+    filter=ListApplicationsFilter(page_size=10, page=1)
 )
 
-response = client.application.list_applications()
-
-pprint(response)
+print(f'Applications:\n{applications}, \nNext page: {next_page}')
