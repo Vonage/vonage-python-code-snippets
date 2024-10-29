@@ -1,16 +1,10 @@
-#!/usr/bin/env python3
 from pprint import pprint
-from flask import Flask, request
+from fastapi import FastAPI, Request, status
 
-app = Flask(__name__)
+app = FastAPI()
 
 
-@app.route("/webhooks/message-status", methods=["POST"])
-def message_status():
-    data = request.get_json()
+@app.post('/status', status_code=status.HTTP_200_OK)
+async def status_message(request: Request):
+    data = await request.json()
     pprint(data)
-    return "200"
-
-
-if __name__ == "__main__":
-    app.run(host="www.example.org", port=3000)

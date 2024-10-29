@@ -1,16 +1,10 @@
-#!/usr/bin/env python3
 from pprint import pprint
-from flask import Flask, request
+from fastapi import FastAPI, Request
 
-app = Flask(__name__)
+app = FastAPI()
 
 
-@app.route("/webhooks/inbound-message", methods=["POST"])
-def inbound_message():
-    data = request.get_json()
+@app.post('/inbound')
+async def inbound_message(request: Request):
+    data = await request.json()
     pprint(data)
-    return "200"
-
-
-if __name__ == "__main__":
-    app.run(host="www.example.org", port=3000)
