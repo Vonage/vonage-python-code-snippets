@@ -7,27 +7,33 @@ Note: you must have enabled signed webhooks. To do this, please contact support.
 
 ## Usage
 
-Install dependencies inside a virtual environment, run the Flask application and set up a webhook.
+You may want to use a localhost tunnel agent such as [ngrok](https://ngrok.com/) for local testing.
 
-### Set up a virtual environment
-1. Run `python3 -m venv venv`
-1. Run `source venv/bin/activate`
-1. Run `pip install -r requirements.txt`
+### Set Up Your Environment
 
-### Set up and run the Flask application
-1. Copy `.env.dist` to `.env` in the root directory of this repo and fill in your values for:
-    * `VONAGE_API_KEY`
-    * `VONAGE_SIGNATURE_SECRET`
-    * `VONAGE_SIGNATURE_SECRET_METHOD`
-1. Copy `.flaskenv.dist` to `.flaskenv` and fill in your credentials
-1. Run `flask run`
+Install dependencies with `pip` in a virtual environment:
 
-### Set up incoming webhook
-1. Start ngrok with `ngrok http 3000`. ngrok will give you a forwarding address you can now use for your delivery receipts.
-1. Copy this URL and go to your [customer dashboard](https://dashboard.nexmo.com/sign-in)
-1. Click on "Numbers", and then ["Your Numbers"](https://dashboard.nexmo.com/your-numbers)
-1. Click the "Edit" icon on the number to use, and change the "Inbound Webhook URL" option to `https://your-ngrok-url`
-1. Click "Save"
+```bash
+python3 -m venv venv
+. ./venv/bin/activate
 
-You can now send an SMS and the incoming message will be sent to your webhook URL. You can check the console output of
-the application to see the results of the signature check.
+# Point to the requirements file in the root of the python-code-snippets repo
+pip install -r requirements.txt
+```
+
+### Set Up an Incoming Webhook
+1. Start ngrok with `ngrok http 8000`. ngrok will give you a forwarding address you can now use to recieve event webhooks.
+1. Go to the [Customer Dashboard](https://dashboard.nexmo.com/sign-in).
+1. Go to ["API Settings"](https://dashboard.nexmo.com/settings).
+1. Under "SMS Settings", choose the SMS API and paste in your ngrok URL in the "Delivery Receipts" section.
+1. Click "Save Changes".
+
+### Start the FastAPI Server
+
+Run the FastAPI server with
+
+```bash
+fastapi dev sms/verify-signed-sms/main.py
+```
+
+You can now send an SMS and the incoming message will be sent to your webhook URL. You can check the console output of the application to see the results of the signature check.

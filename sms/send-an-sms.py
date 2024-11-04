@@ -5,24 +5,21 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), "../.env")
 load_dotenv(dotenv_path)
 
-VONAGE_API_KEY = os.getenv("VONAGE_API_KEY")
-VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
+VONAGE_API_KEY = os.getenv('VONAGE_API_KEY')
+VONAGE_API_SECRET = os.getenv('VONAGE_API_SECRET')
 VONAGE_BRAND_NAME = os.getenv("VONAGE_BRAND_NAME")
 TO_NUMBER = os.getenv("TO_NUMBER")
 
-import vonage
+from vonage import Auth, Vonage
+from vonage_sms import SmsMessage, SmsResponse
 
-client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
+client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
 
-responseData = client.sms.send_message(
-    {
-        "from": VONAGE_BRAND_NAME,
-        "to": TO_NUMBER,
-        "text": "A text message sent using the Vonage SMS API",
-    }
+message = SmsMessage(
+    to=TO_NUMBER,
+    from_=VONAGE_BRAND_NAME,
+    text="A text message sent using the Vonage SMS API.",
 )
 
-if responseData["messages"][0]["status"] == "0":
-    print("Message sent successfully.")
-else:
-    print(f"Message failed with error: {responseData['messages'][0]['error-text']}")
+response: SmsResponse = client.sms.send(message)
+print(response)

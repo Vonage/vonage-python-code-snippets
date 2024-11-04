@@ -1,33 +1,25 @@
-# Import dependencies
 import os
 from os.path import join, dirname
 from dotenv import load_dotenv
-import vonage
 
-# Load the environment
-envpath = join(dirname(__file__), '../.env')
-load_dotenv(envpath)
+dotenv_path = join(dirname(__file__), "../.env")
+load_dotenv(dotenv_path)
 
-# Initialise the client
-client = vonage.Client(
-    key=os.getenv('VONAGE_API_KEY'),
-    signature_secret=os.getenv('VONAGE_SIGNATURE_SECRET'),
-    signature_method='md5' # MD5 HMAC, need to select this option in the developer dashboard
+VONAGE_API_KEY = os.getenv('VONAGE_API_KEY')
+VONAGE_SIGNATURE_SECRET = os.getenv('VONAGE_SIGNATURE_SECRET')
+VONAGE_BRAND_NAME = os.getenv("VONAGE_BRAND_NAME")
+TO_NUMBER = os.getenv("TO_NUMBER")
+
+from vonage import Auth, Vonage
+from vonage_sms import SmsMessage, SmsResponse
+
+client = Vonage(Auth(api_key=VONAGE_API_KEY, signature_secret=VONAGE_SIGNATURE_SECRET))
+
+message = SmsMessage(
+    to=TO_NUMBER,
+    from_=VONAGE_BRAND_NAME,
+    text="A text message sent using the Vonage SMS API.",
 )
 
-# Define variables - replace FROM_NUMBER and TO_NUMBER with actual numbers
-from_number = os.getenv('FROM_NUMBER')
-to_number = os.getenv('TO_NUMBER')
-text = 'A text message sent using the Vonage SMS API'
-
-# Sending the sms
-response = client.sms.send_message({
-    "from": from_number,
-    "to": to_number,
-    "text": text
-})
-
-if response["messages"][0]["status"] == "0":
-    print("Message sent successfully.")
-else:
-    print(f"Message failed with error: {response['messages'][0]['error-text']}")
+response: SmsResponse = client.sms.send(message)
+print(response)

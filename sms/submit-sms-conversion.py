@@ -7,20 +7,18 @@ load_dotenv(dotenv_path)
 
 VONAGE_API_KEY = os.getenv('VONAGE_API_KEY')
 VONAGE_API_SECRET = os.getenv('VONAGE_API_SECRET')
-VONAGE_BRAND_NAME = os.getenv("VONAGE_BRAND_NAME")
-TO_NUMBER = os.getenv("TO_NUMBER")
 
 from vonage import Auth, Vonage
-from vonage_sms import SmsMessage, SmsResponse
 
 client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
 
-message = SmsMessage(
-    to=TO_NUMBER,
-    from_=VONAGE_BRAND_NAME,
-    text='こんにちは世界',
-    type='unicode',
+client.sms.submit_sms_conversion(
+    message_id='MESSAGE_ID',
+    delivered=True,
+    timestamp='2020-01-01T12:00:00Z',
 )
 
-response: SmsResponse = client.sms.send(message)
-print(response)
+if client.http_client.last_response.status_code == 200:
+    print('Conversion submitted successfully.')
+else:
+    print('Conversion not submitted.')

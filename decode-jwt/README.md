@@ -8,7 +8,7 @@ For signed incoming SMS signatures through the Messaging API, please see the sni
 
 You may want to use a localhost tunnel agent such as [ngrok](https://ngrok.com/) for local testing.
 
-### Set Up Your Enviroment
+### Set Up Your Environment
 
 Install dependencies with `pip` in a virtual environment:
 
