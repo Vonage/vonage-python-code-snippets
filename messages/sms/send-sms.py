@@ -22,10 +22,11 @@ client = Vonage(
     )
 )
 
-client.messages.send(
+response = client.messages.send(
     Sms(
         to=TO_NUMBER,
         from_=VONAGE_BRAND_NAME,
         text='This is an SMS sent using the Vonage Messages API.',
     )
 )
+print(response)
