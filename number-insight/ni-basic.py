@@ -10,9 +10,12 @@ VONAGE_API_KEY = os.getenv('VONAGE_API_KEY')
 VONAGE_API_SECRET = os.getenv('VONAGE_API_SECRET')
 INSIGHT_NUMBER = os.getenv('INSIGHT_NUMBER')
 
-import vonage
+from vonage import Auth, Vonage
+from vonage_number_insight import BasicInsightRequest, BasicInsightResponse
 
-client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
+client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
 
-insight_json = client.number_insight.get_basic_number_insight(number=INSIGHT_NUMBER)
-pprint(insight_json)
+insight: BasicInsightResponse = client.number_insight.basic_number_insight(
+    BasicInsightRequest(number=INSIGHT_NUMBER)
+)
+pprint(insight)
