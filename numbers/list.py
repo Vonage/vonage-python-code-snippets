@@ -1,5 +1,6 @@
 import os
 from os.path import join, dirname
+from pprint import pprint
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), "../.env")
@@ -10,17 +11,17 @@ VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
 NUMBER_SEARCH_CRITERIA = os.getenv("NUMBER_SEARCH_CRITERIA")
 NUMBER_SEARCH_PATTERN = os.getenv("NUMBER_SEARCH_PATTERN")
 
-import vonage
+from vonage import Auth, Vonage
+from vonage_numbers import ListOwnedNumbersFilter
 
-client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
+client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
 
-responseData = client.numbers.get_account_numbers(
-    {"pattern": NUMBER_SEARCH_CRITERIA, "search_pattern": NUMBER_SEARCH_PATTERN}
+numbers, count, next = client.numbers.list_owned_numbers(
+    ListOwnedNumbersFilter(
+        pattern=NUMBER_SEARCH_CRITERIA, search_pattern=NUMBER_SEARCH_PATTERN
+    )
 )
 
-print(
-    f'Here are {len(responseData["numbers"])} of the {responseData["count"]} matching numbers in your account:'
-)
-
-for number in responseData["numbers"]:
-    print(f'Tel: {number["msisdn"]} Type: {number["type"]}')
+pprint(numbers)
+print(count)
+print(next)

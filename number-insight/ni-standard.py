@@ -15,7 +15,7 @@ from vonage_number_insight import StandardInsightRequest, StandardInsightRespons
 
 client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
 
-insight: StandardInsightResponse = client.number_insight.standard_number_insight(
+insight: StandardInsightResponse = client.number_insight.get_standard_info(
     StandardInsightRequest(number=INSIGHT_NUMBER)
 )
 pprint(insight)

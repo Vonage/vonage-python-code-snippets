@@ -10,12 +10,13 @@ VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
 VONAGE_NUMBER = os.getenv("VONAGE_NUMBER")
 COUNTRY_CODE = os.getenv("COUNTRY_CODE")
 
-import vonage
+from vonage import Auth, Vonage
+from vonage_numbers import NumberParams, NumbersStatus
 
-client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
+client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
 
-try:
-    response = client.numbers.cancel_number({"country": COUNTRY_CODE, "msisdn": VONAGE_NUMBER})
-    print("Number cancelled")
-except Exception as exc:
-    print("Error cancelling number", exc)
+status: NumbersStatus = client.numbers.cancel_number(
+    NumberParams(country=COUNTRY_CODE, msisdn=VONAGE_NUMBER)
+)
+
+print(status.model_dump())
