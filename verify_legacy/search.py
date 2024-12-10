@@ -1,26 +1,18 @@
-import argparse
 import os
 from os.path import join, dirname
 from dotenv import load_dotenv
-import vonage
 
 dotenv_path = join(dirname(__file__), "../.env")
 load_dotenv(dotenv_path)
 
 VONAGE_API_KEY = os.getenv("VONAGE_API_KEY")
 VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
+REQUEST_ID = os.getenv("REQUEST_ID")
 
-argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument("request_id")
-arguments = argument_parser.parse_args()
+from vonage import Auth, Vonage
+from vonage_verify_legacy import VerifyStatus
 
-REQUEST_ID = arguments.request_id
+client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
 
-client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
-
-response = client.verify.search(REQUEST_ID)
-
-if response is not None:
-    print(response['status'])
-else:
-    print(f'{REQUEST_ID} was not found')
+response: VerifyStatus = client.verify_legacy.search(REQUEST_ID)
+print(response)

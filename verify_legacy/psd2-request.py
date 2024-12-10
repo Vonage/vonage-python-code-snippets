@@ -10,16 +10,13 @@ VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
 TO_NUMBER = os.getenv("TO_NUMBER")
 PAYEE = os.environ.get("PAYEE")
 AMOUNT = os.environ.get("AMOUNT")
-WORKFLOW_ID = os.environ.get("WORKFLOW_ID")
 
 from vonage import Auth, Vonage
 from vonage_verify_legacy import StartVerificationResponse, Psd2Request
 
 client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
 
-request = Psd2Request(
-    number=TO_NUMBER, payee=PAYEE, amount=AMOUNT, workflow_id=WORKFLOW_ID
-)
+request = Psd2Request(number=TO_NUMBER, payee=PAYEE, amount=AMOUNT)
 
 response: StartVerificationResponse = client.verify_legacy.start_psd2_verification(
     request

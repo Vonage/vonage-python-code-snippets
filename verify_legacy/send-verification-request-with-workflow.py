@@ -1,24 +1,21 @@
 import os
 from os.path import join, dirname
 from dotenv import load_dotenv
-import vonage
 
 dotenv_path = join(dirname(__file__), "../.env")
 load_dotenv(dotenv_path)
 
 VONAGE_API_KEY = os.getenv("VONAGE_API_KEY")
 VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
-RECIPIENT_NUMBER = os.getenv("RECIPIENT_NUMBER")
-BRAND_NAME = os.getenv("BRAND_NAME")
-WORKFLOW_ID = os.getenv("WORKFLOW_ID")
+TO_NUMBER = os.getenv("TO_NUMBER")
+WORKFLOW_ID = os.environ.get("WORKFLOW_ID")
 
-client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
+from vonage import Auth, Vonage
+from vonage_verify_legacy import StartVerificationResponse, VerifyRequest
 
-response = client.verify.start_verification(
-    number=RECIPIENT_NUMBER, brand=BRAND_NAME, workflow_id=WORKFLOW_ID
-)
+client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
 
-if response["status"] == "0":
-    print("Started verification request_id is %s" % (response["request_id"]))
-else:
-    print("Error: %s" % response["error_text"])
+request = VerifyRequest(number=TO_NUMBER, brand='AcmeInc', workflow_id=WORKFLOW_ID)
+
+response: StartVerificationResponse = client.verify_legacy.start_verification(request)
+print(response)
