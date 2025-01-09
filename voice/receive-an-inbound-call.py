@@ -1,24 +1,13 @@
-#!/usr/bin/env python3
+from fastapi import FastAPI, Query
+from vonage_voice.models import Talk
 
-from flask import Flask, request, jsonify
-
-app = Flask(__name__)
-
-
-@app.route("/webhooks/answer")
-def answer_call():
-    for param_key, param_value in request.args.items():
-        print("{}: {}".format(param_key, param_value))
-
-    from_ = request.args['from']
-
-    return jsonify([
-        {
-            "action": "talk",
-            "text": "Thank you for calling from " + " ".join(from_)
-        }
-    ])
+app = FastAPI()
 
 
-if __name__ == '__main__':
-    app.run(port=3000)
+@app.get('/answer')
+async def answer_call(from_: str = Query(..., alias='from')):
+    return [
+        Talk(text=f'Thank you for calling from {from_}').model_dump(
+            by_alias=True, exclude_none=True
+        )
+    ]

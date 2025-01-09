@@ -1,23 +1,23 @@
-#!/usr/bin/env python3
-from flask import Flask, jsonify
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+from fastapi import FastAPI
+from vonage_voice.models import Connect, PhoneEndpoint
 
-app = Flask(__name__)
+VONAGE_NUMBER = os.environ.get('VONAGE_NUMBER')
+YOUR_SECOND_NUMBER = os.environ.get('YOUR_SECOND_NUMBER')
+
+dotenv_path = join(dirname(__file__), '../.env')
+load_dotenv(dotenv_path)
+app = FastAPI()
 
 
-@app.route("/webhooks/answer")
-def answer_call():
+@app.get('/answer')
+async def inbound_call():
     ncco = [
-        {
-            "action": "connect",
-            "from": "VONAGE_NUMBER",
-            "endpoint": [{
-                "type": 'phone',
-                "number": "YOUR_SECOND_NUMBER"
-            }]
-        }
+        Connect(
+            endpoint=[PhoneEndpoint(number='123456789')], from_=VONAGE_NUMBER
+        ).model_dump(by_alias=True, exclude_none=True)
     ]
-    return jsonify(ncco)
 
-
-if __name__ == '__main__':
-    app.run(port=3000)
+    return ncco
