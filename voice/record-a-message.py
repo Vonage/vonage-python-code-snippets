@@ -1,40 +1,27 @@
-#!/usr/bin/env python3
+from fastapi import FastAPI, Body, Request
 from pprint import pprint
-import http
-from flask import Flask, request, jsonify
+from vonage_voice.models import NccoAction, Record, Talk
 
-app = Flask(__name__)
+app = FastAPI()
 
 
-@app.route("/webhooks/answer")
-def answer_call():
-    for param_key, param_value in request.args.items():
-        print("{}: {}".format(param_key, param_value))
-    recording_webhook_url = request.url_root + "webhooks/recording"
-    ncco = [
-        {
-            "action": "talk",
-            "text": "Please leave a message after the tone, then press the hash key."
-        },
-        {
-            "action": "record",
-            "endOnKey": "#",
-            "beepStart": "true",
-            "eventUrl": [recording_webhook_url]
-        },
-        {
-            "action": "talk",
-            "text": "Thank you for your message."
-        }
+@app.get('/webhooks/answer')
+async def answer_call(request: Request):
+    print(request.base_url)
+    ncco: list[NccoAction] = [
+        Talk(text='Please leave a message after the tone, then press the hash key.'),
+        Record(
+            endOnKey='#',
+            beepStart=True,
+            eventUrl=[str(request.base_url) + '/webhooks/recordings'],
+        ),
+        Talk(text='Thank you for your message.'),
     ]
-    return jsonify(ncco)
+
+    return [step.model_dump(by_alias=True, exclude_none=True) for step in ncco]
 
 
-@app.route("/webhooks/recording", methods=['POST'])
-def recording_webhook():
-    pprint(request.get_json())
-    return ('', http.HTTPStatus.NO_CONTENT)
-
-
-if __name__ == '__main__':
-    app.run(port=3000)
+@app.post('/webhooks/recordings')
+async def recordings(data: dict = Body(...)):
+    pprint(data)
+    return {'message': 'webhook received'}

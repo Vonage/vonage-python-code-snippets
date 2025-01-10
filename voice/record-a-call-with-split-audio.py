@@ -1,44 +1,41 @@
-#!/usr/bin/env python3
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+from fastapi import FastAPI, Body
 from pprint import pprint
-from flask import Flask, request, jsonify
+from vonage_voice.models import Connect, NccoAction, PhoneEndpoint, Record, Talk
 
-app = Flask(__name__)
+dotenv_path = join(dirname(__file__), '../.env')
+load_dotenv(dotenv_path)
+
+VONAGE_NUMBER = os.environ.get('VONAGE_NUMBER')
+RECIPIENT_NUMBER = os.environ.get('RECIPIENT_NUMBER')
+
+app = FastAPI()
 
 
-@app.route("/webhooks/answer")
-def answer_call():
-    ncco = [
-        {
-            "action": "talk",
-            "text": "Hi, we will shortly forward your call. This call is recorded for quality assurance purposes."
-        },
-        {
-            "action": "record",
-            "split": "conversation",
-            "channels": 2,
-            "eventUrl": ["https://demo.ngrok.io/webhooks/recordings"]
-        },
-        {
-            "action": "connect",
-            "eventUrl": ["https://demo.ngrok.io/webhooks/event"],
-            "from": "VONAGE_NUMBER",
-            "endpoint": [
-                {
-                    "type": "phone",
-                    "number": "RECIPIENT_NUMBER"
-                }
-            ]
-        }
+@app.get('/webhooks/answer')
+async def inbound_call():
+    ncco: list[NccoAction] = [
+        Talk(
+            text=f'Hi, we will shortly forward your call. This call is recorded for quality assurance purposes.'
+        ),
+        Record(
+            split='conversation',
+            channels=2,
+            eventUrl=['https://demo.ngrok.io/webhooks/recordings'],
+        ),
+        Connect(
+            endpoint=[PhoneEndpoint(number=RECIPIENT_NUMBER)],
+            from_=VONAGE_NUMBER,
+            eventUrl=['https://demo.ngrok.io/webhooks/event'],
+        ),
     ]
-    return jsonify(ncco)
+
+    return [step.model_dump(by_alias=True, exclude_none=True) for step in ncco]
 
 
-@app.route("/webhooks/recordings", methods=['POST'])
-def recordings():
-    data = request.get_json()
+@app.post('/webhooks/recordings')
+async def recordings(data: dict = Body(...)):
     pprint(data)
-    return "Webhook received"
-
-
-if __name__ == '__main__':
-    app.run(port=3000)
+    return {'message': 'webhook received'}
