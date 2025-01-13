@@ -1,42 +1,36 @@
-#!/usr/bin/env python3
-from pprint import pprint
-from flask import Flask, request, jsonify
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+from fastapi import FastAPI, Body, Request
+from vonage_voice.models import Input, NccoAction, Talk
 
-app = Flask(__name__)
+dotenv_path = join(dirname(__file__), '../.env')
+load_dotenv(dotenv_path)
+
+VONAGE_NUMBER = os.environ.get('VONAGE_NUMBER')
+RECIPIENT_NUMBER = os.environ.get('RECIPIENT_NUMBER')
+
+app = FastAPI()
 
 
-@app.route("/webhooks/answer")
-def answer_call():
-    for param_key, param_value in request.args.items():
-        print("{}: {}".format(param_key, param_value))
-    input_webhook_url = request.url_root + "webhooks/dtmf"
-    ncco = [
-        {
-            "action": "talk",
-            "text": "Hello, please press any key to continue."
-        },
-        {
-            "action": "input",
-            "type": ["dtmf"],
-            "maxDigits": 1,
-            "eventUrl": [input_webhook_url]
-        }
+@app.get('/webhooks/answer')
+async def answer_call(request: Request):
+    ncco: list[NccoAction] = [
+        Talk(text=f'Please enter a digit.'),
+        Input(
+            type=['dtmf'],
+            maxDigits=1,
+            eventUrl=[str(request.base_url) + '/webhooks/dtmf'],
+        ),
     ]
-    return jsonify(ncco)
+
+    return [action.model_dump(by_alias=True, exclude_none=True) for action in ncco]
 
 
-@app.route("/webhooks/dtmf", methods=['POST'])
-def dtmf():
-    data = request.get_json()
-    pprint(data)
-    ncco = [
-        {
-            "action": "talk",
-            "text": "You pressed {}, goodbye".format(data['dtmf'])
-        }
+@app.post('/webhooks/dtmf')
+async def answer_dtmf(data: dict = Body(...)):
+    return [
+        Talk(text=f'Hello, you pressed {data['dtmf']}').model_dump(
+            by_alias=True, exclude_none=True
+        )
     ]
-    return jsonify(ncco)
-
-
-if __name__ == '__main__':
-    app.run(port=3000)

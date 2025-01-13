@@ -1,29 +1,24 @@
-#!/usr/bin/env python3
-from flask import Flask, jsonify
+import os
 from os.path import join, dirname
 from dotenv import load_dotenv
-import os
+from fastapi import FastAPI
+from vonage_voice.models import Conversation, NccoAction, Talk
 
-app = Flask(__name__)
-
-dotenv_path = join(dirname(__file__), "../.env")
+dotenv_path = join(dirname(__file__), '../.env')
 load_dotenv(dotenv_path)
 
+VONAGE_NUMBER = os.environ.get('VONAGE_NUMBER')
+YOUR_SECOND_NUMBER = os.environ.get('YOUR_SECOND_NUMBER')
 CONFERENCE_NAME = os.environ.get("CONFERENCE_NAME")
 
-@app.route("/webhooks/answer")
-def answer_call():
-    ncco = [
-        {
-            "action": "talk",
-            "text": "Please wait while we connect you to the conference"
-        },
-        {
-            "action": "conversation",
-            "name": CONFERENCE_NAME
-        }]
-    return jsonify(ncco)
+app = FastAPI()
 
 
-if __name__ == '__main__':
-    app.run(port=3000)
+@app.get('/webhooks/answer')
+async def answer_call():
+    ncco: list[NccoAction] = [
+        Talk(text="Please wait while we connect you to the conference"),
+        Conversation(name=CONFERENCE_NAME),
+    ]
+
+    return [action.model_dump(by_alias=True, exclude_none=True) for action in ncco]

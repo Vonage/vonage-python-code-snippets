@@ -28,7 +28,7 @@ async def inbound_call():
         ),
     ]
 
-    return [step.model_dump(by_alias=True, exclude_none=True) for step in ncco]
+    return [action.model_dump(by_alias=True, exclude_none=True) for action in ncco]
 
 
 @app.post('/webhooks/recordings')

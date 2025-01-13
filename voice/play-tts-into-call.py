@@ -12,6 +12,7 @@ VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get(
 )
 
 CALL_UUID = os.environ.get('CALL_UUID')
+LANGUAGE = os.environ.get('LANGUAGE')
 
 from vonage import Auth, Vonage
 from vonage_voice.models import CallMessage, TtsStreamOptions
@@ -25,7 +26,8 @@ client = Vonage(
 )
 
 response: CallMessage = client.voice.play_tts_into_call(
-    uuid=CALL_UUID, tts_options=TtsStreamOptions(text='Hello from Vonage.')
+    uuid=CALL_UUID,
+    tts_options=TtsStreamOptions(text='Hello from Vonage.', language=LANGUAGE),
 )
 
 pprint(response)

@@ -18,7 +18,7 @@ async def answer_call(request: Request):
         Talk(text='Thank you for your message.'),
     ]
 
-    return [step.model_dump(by_alias=True, exclude_none=True) for step in ncco]
+    return [action.model_dump(by_alias=True, exclude_none=True) for action in ncco]
 
 
 @app.post('/webhooks/recordings')

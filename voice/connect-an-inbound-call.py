@@ -12,7 +12,7 @@ load_dotenv(dotenv_path)
 app = FastAPI()
 
 
-@app.get('/answer')
+@app.get('/webhooks/answer')
 async def inbound_call():
     ncco = [
         Connect(
