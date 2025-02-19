@@ -6,9 +6,7 @@ dotenv_path = join(dirname(__file__), "../../.env")
 load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get(
-    "VONAGE_APPLICATION_PRIVATE_KEY_PATH"
-)
+VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
 
 MESSAGES_SANDBOX_URL = os.environ.get("MESSAGES_SANDBOX_URL")
 MESSAGES_SANDBOX_WHATSAPP_NUMBER = os.environ.get("MESSAGES_SANDBOX_WHATSAPP_NUMBER")
@@ -22,7 +20,7 @@ from vonage_messages.models import WhatsappText
 client = Vonage(
     auth=Auth(
         application_id=VONAGE_APPLICATION_ID,
-        private_key=VONAGE_APPLICATION_PRIVATE_KEY_PATH,
+        private_key=VONAGE_PRIVATE_KEY,
     ),
     http_client_options=HttpClientOptions(api_host=MESSAGES_SANDBOX_URL),
 )

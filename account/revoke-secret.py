@@ -8,9 +8,9 @@ load_dotenv(envpath)
 
 VONAGE_API_KEY = os.environ.get("VONAGE_API_KEY")
 VONAGE_API_SECRET = os.environ.get("VONAGE_API_SECRET")
-VONAGE_SECRET_ID = os.getenv("VONAGE_SECRET_ID")
+ACCOUNT_SECRET_ID = os.getenv("ACCOUNT_SECRET_ID")
 
 from vonage import Auth, Vonage
 
 client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
-client.account.revoke_secret(VONAGE_SECRET_ID)
+client.account.revoke_secret(ACCOUNT_SECRET_ID)

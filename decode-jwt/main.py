@@ -8,7 +8,7 @@ envpath = join(dirname(__file__), '../.env')
 load_dotenv(envpath)
 
 
-VONAGE_SIGNATURE = os.getenv('VONAGE_SIGNATURE')
+VONAGE_SIGNATURE_SECRET = os.getenv('VONAGE_SIGNATURE_SECRET')
 
 from fastapi import FastAPI, Request
 from vonage_jwt.verify_jwt import verify_signature
@@ -22,7 +22,7 @@ async def verify_signed_webhook(request: Request):
     auth_header = request.headers["authorization"].split()
     token = auth_header[1].strip()
 
-    if verify_signature(token, VONAGE_SIGNATURE):
+    if verify_signature(token, VONAGE_SIGNATURE_SECRET):
         print('Valid signature')
     else:
         print('Invalid signature')

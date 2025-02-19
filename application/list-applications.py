@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+from pprint import pprint
 import os
 from os.path import join, dirname
 from dotenv import load_dotenv
@@ -18,4 +18,4 @@ applications, next_page = client.application.list_applications(
     filter=ListApplicationsFilter(page_size=10, page=1)
 )
 
-print(f'Applications:\n{applications}, \nNext page: {next_page}')
+pprint(f'Applications:\n{applications}, \nNext page: {next_page}')

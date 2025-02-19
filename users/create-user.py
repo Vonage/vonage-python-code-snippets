@@ -7,7 +7,7 @@ envpath = join(dirname(__file__), "../.env")
 load_dotenv(envpath)
 
 VONAGE_APPLICATION_ID = os.getenv('VONAGE_APPLICATION_ID')
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.getenv('VONAGE_APPLICATION_PRIVATE_KEY_PATH')
+VONAGE_PRIVATE_KEY = os.getenv('VONAGE_PRIVATE_KEY')
 USER_NAME = os.getenv('USER_NAME')
 USER_DISPLAY_NAME = os.getenv('USER_DISPLAY_NAME')
 
@@ -17,7 +17,7 @@ from vonage_users import Channels, PstnChannel, User
 client = Vonage(
     Auth(
         application_id=VONAGE_APPLICATION_ID,
-        private_key=VONAGE_APPLICATION_PRIVATE_KEY_PATH,
+        private_key=VONAGE_PRIVATE_KEY,
     )
 )
 

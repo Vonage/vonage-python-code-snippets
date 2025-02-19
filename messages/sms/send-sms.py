@@ -6,11 +6,9 @@ dotenv_path = join(dirname(__file__), "../../.env")
 load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
-VONAGE_APPLICATION_PRIVATE_KEY_PATH = os.environ.get(
-    "VONAGE_APPLICATION_PRIVATE_KEY_PATH"
-)
-VONAGE_BRAND_NAME = os.environ.get("VONAGE_BRAND_NAME")
-TO_NUMBER = os.environ.get("TO_NUMBER")
+VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
+MESSAGES_TO_NUMBER = os.environ.get("MESSAGES_TO_NUMBER")
+SMS_SENDER_ID = os.environ.get("SMS_SENDER_ID")
 
 from vonage import Auth, Vonage
 from vonage_messages.models import Sms
@@ -18,14 +16,14 @@ from vonage_messages.models import Sms
 client = Vonage(
     Auth(
         application_id=VONAGE_APPLICATION_ID,
-        private_key=VONAGE_APPLICATION_PRIVATE_KEY_PATH,
+        private_key=VONAGE_PRIVATE_KEY,
     )
 )
 
 response = client.messages.send(
     Sms(
-        to=TO_NUMBER,
-        from_=VONAGE_BRAND_NAME,
+        to=MESSAGES_TO_NUMBER,
+        from_=SMS_SENDER_ID,
         text='This is an SMS sent using the Vonage Messages API.',
     )
 )
