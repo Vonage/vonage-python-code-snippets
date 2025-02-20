@@ -7,8 +7,9 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
-TO_NUMBER = os.environ.get("TO_NUMBER")
+MESSAGES_TO_NUMBER = os.environ.get("MESSAGES_TO_NUMBER")
 RCS_SENDER_ID = os.environ.get("RCS_SENDER_ID")
+MESSAGES_IMAGE_URL = os.environ.get("MESSAGES_IMAGE_URL")
 
 from vonage import Auth, Vonage
 from vonage_messages.models import RcsCustom
@@ -32,7 +33,7 @@ custom_dict = {
                     "media": {
                         "height": "TALL",
                         "contentInfo": {
-                            "fileUrl": "'$IMAGE_URL'",
+                            "fileUrl": MESSAGES_IMAGE_URL,
                             "forceRefresh": "false",
                         },
                     },
@@ -57,7 +58,7 @@ custom_dict = {
 }
 
 message = RcsCustom(
-    to=TO_NUMBER,
+    to=MESSAGES_TO_NUMBER,
     from_=RCS_SENDER_ID,
     custom=custom_dict,
 )

@@ -7,9 +7,9 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
-TO_NUMBER = os.environ.get("TO_NUMBER")
+MESSAGES_TO_NUMBER = os.environ.get("MESSAGES_TO_NUMBER")
 RCS_SENDER_ID = os.environ.get("RCS_SENDER_ID")
-VIDEO_URL = os.environ.get("VIDEO_URL")
+MESSAGES_VIDEO_URL = os.environ.get("MESSAGES_VIDEO_URL")
 
 from vonage import Auth, Vonage
 from vonage_messages.models import RcsVideo, RcsResource
@@ -22,9 +22,9 @@ client = Vonage(
 )
 
 message = RcsVideo(
-    to=TO_NUMBER,
+    to=MESSAGES_TO_NUMBER,
     from_=RCS_SENDER_ID,
-    video=RcsResource(url='VIDEO_URL'),
+    video=RcsResource(url=MESSAGES_VIDEO_URL),
 )
 
 response = client.messages.send(message)
