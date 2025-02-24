@@ -13,7 +13,7 @@ CALL_UUID = os.environ.get('CALL_UUID')
 LANGUAGE = os.environ.get('LANGUAGE')
 
 from vonage import Auth, Vonage
-from vonage_voice.models import CallMessage, TtsStreamOptions
+from vonage_voice import CallMessage, TtsStreamOptions
 
 
 client = Vonage(

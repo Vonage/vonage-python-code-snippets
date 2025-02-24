@@ -11,7 +11,7 @@ VONAGE_APPLICATION_ID = os.environ.get('VONAGE_APPLICATION_ID')
 VONAGE_PRIVATE_KEY = os.environ.get('VONAGE_PRIVATE_KEY')
 
 from vonage import Auth, Vonage
-from vonage_voice.models import ListCallsFilter
+from vonage_voice import ListCallsFilter
 
 client = Vonage(
     Auth(

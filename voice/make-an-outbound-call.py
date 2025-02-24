@@ -13,7 +13,7 @@ FROM_NUMBER = os.environ.get("FROM_NUMBER")
 TO_NUMBER = os.environ.get("TO_NUMBER")
 
 from vonage import Auth, Vonage
-from vonage_voice.models import CreateCallRequest, Phone, ToPhone
+from vonage_voice import CreateCallRequest, Phone, ToPhone
 
 client = Vonage(
     Auth(

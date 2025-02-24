@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Body, Request
 from pprint import pprint
-from vonage_voice.models import NccoAction, Record, Talk
+from vonage_voice import NccoAction, Record, Talk
 
 app = FastAPI()
 

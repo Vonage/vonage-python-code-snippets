@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Query
-from vonage_voice.models import Talk
+from vonage_voice import Talk
 
 app = FastAPI()
 

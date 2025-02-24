@@ -14,7 +14,7 @@ VONAGE_NUMBER = os.environ.get('VONAGE_NUMBER')
 TO_NUMBER = os.environ.get('TO_NUMBER')
 
 from vonage import Auth, Vonage
-from vonage_voice.models import CreateCallRequest, Phone, Talk, ToPhone
+from vonage_voice import CreateCallRequest, Phone, Talk, ToPhone
 
 client = Vonage(
     Auth(

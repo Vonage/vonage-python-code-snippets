@@ -10,7 +10,7 @@ VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
 UUID = os.environ.get("UUID")
 
 from vonage import Auth, Vonage
-from vonage_voice.models import Talk
+from vonage_voice import Talk
 
 client = Vonage(
     Auth(

@@ -12,7 +12,7 @@ VONAGE_PRIVATE_KEY = os.environ.get('VONAGE_PRIVATE_KEY')
 CALL_UUID = os.environ.get('CALL_UUID')
 
 from vonage import Auth, Vonage
-from vonage_voice.models import CallMessage
+from vonage_voice import CallMessage
 
 
 client = Vonage(

@@ -2,7 +2,7 @@ import os
 from os.path import join, dirname
 from dotenv import load_dotenv
 from fastapi import FastAPI
-from vonage_voice.models import Connect, PhoneEndpoint
+from vonage_voice import Connect, PhoneEndpoint
 
 VONAGE_NUMBER = os.environ.get('VONAGE_NUMBER')
 YOUR_SECOND_NUMBER = os.environ.get('YOUR_SECOND_NUMBER')

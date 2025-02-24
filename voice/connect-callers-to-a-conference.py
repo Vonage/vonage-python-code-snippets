@@ -2,7 +2,7 @@ import os
 from os.path import join, dirname
 from dotenv import load_dotenv
 from fastapi import FastAPI
-from vonage_voice.models import Conversation, NccoAction, Talk
+from vonage_voice import Conversation, NccoAction, Talk
 
 dotenv_path = join(dirname(__file__), '../.env')
 load_dotenv(dotenv_path)
