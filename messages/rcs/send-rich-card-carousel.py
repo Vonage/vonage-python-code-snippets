@@ -13,7 +13,7 @@ MESSAGES_IMAGE_URL = os.environ.get("MESSAGES_IMAGE_URL")
 MESSAGES_VIDEO_URL = os.environ.get("MESSAGES_VIDEO_URL")
 
 from vonage import Auth, Vonage
-from vonage_messages.models import RcsCustom
+from vonage_messages import RcsCustom
 
 client = Vonage(
     Auth(

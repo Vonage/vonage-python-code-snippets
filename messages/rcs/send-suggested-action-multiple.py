@@ -11,7 +11,7 @@ MESSAGES_TO_NUMBER = os.environ.get("MESSAGES_TO_NUMBER")
 RCS_SENDER_ID = os.environ.get("RCS_SENDER_ID")
 
 from vonage import Auth, Vonage
-from vonage_messages.models import RcsCustom
+from vonage_messages import RcsCustom
 
 client = Vonage(
     Auth(

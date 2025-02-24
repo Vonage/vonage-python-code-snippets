@@ -15,7 +15,7 @@ MESSAGES_SANDBOX_ALLOW_LISTED_TO_NUMBER = os.environ.get(
 )
 
 from vonage import Auth, HttpClientOptions, Vonage
-from vonage_messages.models import ViberText
+from vonage_messages import ViberText
 
 client = Vonage(
     auth=Auth(

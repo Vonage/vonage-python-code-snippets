@@ -12,7 +12,7 @@ MMS_SENDER_ID = os.environ.get("MMS_SENDER_ID")
 MESSAGES_IMAGE_URL = os.environ.get("MESSAGES_IMAGE_URL")
 
 from vonage import Auth, Vonage
-from vonage_messages.models import MmsImage, MmsResource
+from vonage_messages import MmsImage, MmsResource
 
 client = Vonage(
     Auth(

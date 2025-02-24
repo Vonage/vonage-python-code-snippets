@@ -7,12 +7,12 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
-TO_NUMBER = os.environ.get("TO_NUMBER")
-WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER")
+MESSAGES_TO_NUMBER = os.environ.get("MESSAGES_TO_NUMBER")
+WHATSAPP_SENDER_ID = os.environ.get("WHATSAPP_SENDER_ID")
 VIDEO_URL = os.environ.get("VIDEO_URL")
 
 from vonage import Auth, Vonage
-from vonage_messages.models import WhatsappVideo, WhatsappVideoResource
+from vonage_messages import WhatsappVideo, WhatsappVideoResource
 
 client = Vonage(
     Auth(
@@ -22,8 +22,8 @@ client = Vonage(
 )
 
 message = WhatsappVideo(
-    to=TO_NUMBER,
-    from_=WHATSAPP_NUMBER,
+    to=MESSAGES_TO_NUMBER,
+    from_=WHATSAPP_SENDER_ID,
     video=WhatsappVideoResource(url=VIDEO_URL, caption="Test video file"),
 )
 

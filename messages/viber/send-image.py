@@ -12,7 +12,7 @@ VIBER_SERVICE_MESSAGE_ID = os.environ.get("VIBER_SERVICE_MESSAGE_ID")
 IMAGE_URL = os.environ.get("IMAGE_URL")
 
 from vonage import Auth, Vonage
-from vonage_messages.models import ViberImage, ViberImageResource
+from vonage_messages import ViberImage, ViberImageResource
 
 client = Vonage(
     Auth(

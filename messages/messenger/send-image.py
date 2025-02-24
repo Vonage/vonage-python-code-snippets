@@ -7,25 +7,25 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
-VONAGE_PRIVATE_KEY
-VONAGE_FB_SENDER_ID = os.environ.get("VONAGE_FB_SENDER_ID")
-FB_RECIPIENT_ID = os.environ.get("FB_RECIPIENT_ID")
-IMAGE_URL = os.environ.get("IMAGE_URL")
+
+MESSENGER_RECIPIENT_ID = os.environ.get("MESSENGER_RECIPIENT_ID")
+MESSENGER_SENDER_ID = os.environ.get("MESSENGER_SENDER_ID")
+MESSAGES_IMAGE_URL = os.environ.get("MESSAGES_IMAGE_URL")
 
 from vonage import Auth, Vonage
-from vonage_messages.models import MessengerImage, MessengerResource
+from vonage_messages import MessengerImage, MessengerResource
 
 client = Vonage(
     Auth(
         application_id=VONAGE_APPLICATION_ID,
         private_key=VONAGE_PRIVATE_KEY,
     )
-)VONAGE_PRIVATE_KEY
+)
 
 message = MessengerImage(
-    to=FB_RECIPIENT_ID,
-    from_=VONAGE_FB_SENDER_ID,
-    image=MessengerResource(url=IMAGE_URL),
+    to=MESSENGER_RECIPIENT_ID,
+    from_=MESSENGER_SENDER_ID,
+    image=MessengerResource(url=MESSAGES_IMAGE_URL),
 )
 
 response = client.messages.send(message)

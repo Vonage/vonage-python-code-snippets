@@ -12,7 +12,7 @@ VIBER_SERVICE_MESSAGE_ID = os.environ.get("VIBER_SERVICE_MESSAGE_ID")
 FILE_URL = os.environ.get("FILE_URL")
 
 from vonage import Auth, Vonage
-from vonage_messages.models import ViberFile, ViberFileResource
+from vonage_messages import ViberFile, ViberFileResource
 
 client = Vonage(
     Auth(

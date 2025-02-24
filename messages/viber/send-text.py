@@ -11,7 +11,7 @@ TO_NUMBER = os.environ.get("TO_NUMBER")
 VIBER_SERVICE_MESSAGE_ID = os.environ.get("VIBER_SERVICE_MESSAGE_ID")
 
 from vonage import Auth, Vonage
-from vonage_messages.models import ViberText
+from vonage_messages import ViberText
 
 client = Vonage(
     Auth(

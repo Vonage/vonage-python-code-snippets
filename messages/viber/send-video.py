@@ -12,7 +12,7 @@ VIBER_SERVICE_MESSAGE_ID = os.environ.get("VIBER_SERVICE_MESSAGE_ID")
 VIDEO_URL = os.environ.get("VIDEO_URL")
 
 from vonage import Auth, Vonage
-from vonage_messages.models import ViberVideo, ViberVideoResource
+from vonage_messages import ViberVideo, ViberVideoResource
 
 client = Vonage(
     Auth(

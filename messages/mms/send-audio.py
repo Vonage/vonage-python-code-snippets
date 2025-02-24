@@ -12,7 +12,7 @@ MMS_SENDER_ID = os.environ.get("MMS_SENDER_ID")
 MESSAGES_AUDIO_URL = os.environ.get("MESSAGES_AUDIO_URL")
 
 from vonage import Auth, Vonage
-from vonage_messages.models import MmsAudio, MmsResource
+from vonage_messages import MmsAudio, MmsResource
 
 client = Vonage(
     Auth(

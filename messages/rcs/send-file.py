@@ -12,7 +12,7 @@ RCS_SENDER_ID = os.environ.get("RCS_SENDER_ID")
 MESSAGES_FILE_URL = os.environ.get("MESSAGES_FILE_URL")
 
 from vonage import Auth, Vonage
-from vonage_messages.models import RcsFile, RcsResource
+from vonage_messages import RcsFile, RcsResource
 
 client = Vonage(
     Auth(

@@ -7,14 +7,14 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
-TO_NUMBER = os.environ.get("TO_NUMBER")
-WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER")
+MESSAGES_TO_NUMBER = os.environ.get("MESSAGES_TO_NUMBER")
+WHATSAPP_SENDER_ID = os.environ.get("WHATSAPP_SENDER_ID")
 WHATSAPP_TEMPLATE_NAME = os.environ.get("WHATSAPP_TEMPLATE_NAME")
 IMAGE_URL = os.environ.get("IMAGE_URL")
 WHATSAPP_TEMPLATE_REPLACEMENT_TEXT = os.environ.get("WHATSAPP_TEMPLATE_REPLACEMENT_TEXT")
 
 from vonage import Auth, Vonage
-from vonage_messages.models import WhatsappCustom
+from vonage_messages import WhatsappCustom
 
 client = Vonage(
     Auth(
@@ -24,8 +24,8 @@ client = Vonage(
 )
 
 message = WhatsappCustom(
-    to=TO_NUMBER,
-    from_=WHATSAPP_NUMBER,
+    to=MESSAGES_TO_NUMBER,
+    from_=WHATSAPP_SENDER_ID,
     custom={
         "type": "template",
         "template": {

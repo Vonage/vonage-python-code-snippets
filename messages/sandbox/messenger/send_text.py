@@ -15,7 +15,7 @@ MESSAGES_SANDBOX_ALLOW_LISTED_FB_RECIPIENT_ID = os.environ.get(
 )
 
 from vonage import Auth, HttpClientOptions, Vonage
-from vonage_messages.models import MessengerText
+from vonage_messages import MessengerText
 
 client = Vonage(
     auth=Auth(

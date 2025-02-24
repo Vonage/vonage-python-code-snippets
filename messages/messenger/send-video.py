@@ -7,25 +7,25 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
-VONAGE_PRIVATE_KEY
-VONAGE_FB_SENDER_ID = os.environ.get("VONAGE_FB_SENDER_ID")
-FB_RECIPIENT_ID = os.environ.get("FB_RECIPIENT_ID")
-VIDEO_URL = os.environ.get("VIDEO_URL")
+MESSENGER_RECIPIENT_ID = os.environ.get("MESSENGER_RECIPIENT_ID")
+MESSENGER_SENDER_ID = os.environ.get("MESSENGER_SENDER_ID")
+MESSAGES_VIDEO_URL = os.environ.get("MESSAGES_VIDEO_URL")
 
-from vonage import Auth, Vonage
-from vonage_messages.models import MessengerVideo, MessengerResource
+from vonage import Auth, HttpClientOptions, Vonage
+from vonage_messages import MessengerVideo, MessengerResource
 
 client = Vonage(
     Auth(
         application_id=VONAGE_APPLICATION_ID,
-        private_key=VONAGE_PRIVATE_KEY_PATH,
-    )
-)VONAGE_PRIVATE_KEY
+        private_key=VONAGE_PRIVATE_KEY,
+    ),
+    http_client_options=HttpClientOptions(api_host='messages-sandbox.nexmo.com'),
+)
 
 message = MessengerVideo(
-    to=FB_RECIPIENT_ID,
-    from_=VONAGE_FB_SENDER_ID,
-    video=MessengerResource(url=VIDEO_URL),
+    to=MESSENGER_RECIPIENT_ID,
+    from_=MESSENGER_SENDER_ID,
+    video=MessengerResource(url=MESSAGES_VIDEO_URL),
 )
 
 response = client.messages.send(message)
