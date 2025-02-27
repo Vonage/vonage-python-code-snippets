@@ -11,7 +11,7 @@ VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
 MESSENGER_RECIPIENT_ID = os.environ.get("MESSENGER_RECIPIENT_ID")
 MESSENGER_SENDER_ID = os.environ.get("MESSENGER_SENDER_ID")
 
-from vonage import Auth, HttpClientOptions, Vonage
+from vonage import Auth, Vonage
 from vonage_messages import MessengerText
 
 client = Vonage(

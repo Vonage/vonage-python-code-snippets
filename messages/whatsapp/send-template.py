@@ -9,7 +9,6 @@ VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
 MESSAGES_TO_NUMBER = os.environ.get("MESSAGES_TO_NUMBER")
 WHATSAPP_SENDER_ID = os.environ.get("WHATSAPP_SENDER_ID")
-WHATSAPP_TEMPLATE_NAMESPACE = os.environ.get("WHATSAPP_TEMPLATE_NAMESPACE")
 WHATSAPP_TEMPLATE_NAME = os.environ.get("WHATSAPP_TEMPLATE_NAME")
 
 from vonage import Auth, Vonage
@@ -30,7 +29,7 @@ message = WhatsappTemplate(
     to=MESSAGES_TO_NUMBER,
     from_=WHATSAPP_SENDER_ID,
     template=WhatsappTemplateResource(
-        name=f'{WHATSAPP_TEMPLATE_NAMESPACE}:{WHATSAPP_TEMPLATE_NAME}',
+        name=WHATSAPP_TEMPLATE_NAME,
         parameters=["Vonage Verification", "64873", "10"],
     ),
     whatsapp=WhatsappTemplateSettings(

@@ -9,7 +9,7 @@ VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
 MESSAGES_TO_NUMBER = os.environ.get("MESSAGES_TO_NUMBER")
 WHATSAPP_SENDER_ID = os.environ.get("WHATSAPP_SENDER_ID")
-VIDEO_URL = os.environ.get("VIDEO_URL")
+MESSAGES_VIDEO_URL = os.environ.get("MESSAGES_VIDEO_URL")
 
 from vonage import Auth, Vonage
 from vonage_messages import WhatsappVideo, WhatsappVideoResource
@@ -24,7 +24,7 @@ client = Vonage(
 message = WhatsappVideo(
     to=MESSAGES_TO_NUMBER,
     from_=WHATSAPP_SENDER_ID,
-    video=WhatsappVideoResource(url=VIDEO_URL, caption="Test video file"),
+    video=WhatsappVideoResource(url=MESSAGES_VIDEO_URL, caption="Test video file"),
 )
 
 response = client.messages.send(message)

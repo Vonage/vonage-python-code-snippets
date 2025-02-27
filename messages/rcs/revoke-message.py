@@ -10,14 +10,13 @@ VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
 GEOSPECIFIC_VONAGE_API_HOST = os.environ.get("GEOSPECIFIC_VONAGE_API_HOST")
 MESSAGES_MESSAGE_ID = os.environ.get("MESSAGES_MESSAGE_ID")
 
-from vonage import Auth, HttpClientOptions, Vonage
+from vonage import Auth, Vonage
 
 client = Vonage(
     auth=Auth(
         application_id=VONAGE_APPLICATION_ID,
         private_key=VONAGE_PRIVATE_KEY,
-    ),
-    http_client_options=HttpClientOptions(api_host=GEOSPECIFIC_VONAGE_API_HOST),
+    )
 )
 
 response = client.messages.revoke_rcs_message(MESSAGES_MESSAGE_ID)

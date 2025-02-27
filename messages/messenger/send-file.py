@@ -12,15 +12,14 @@ MESSENGER_RECIPIENT_ID = os.environ.get("MESSENGER_RECIPIENT_ID")
 MESSENGER_SENDER_ID = os.environ.get("MESSENGER_SENDER_ID")
 MESSAGES_FILE_URL = os.environ.get("MESSAGES_FILE_URL")
 
-from vonage import Auth, HttpClientOptions, Vonage
+from vonage import Auth, Vonage
 from vonage_messages import MessengerFile, MessengerResource
 
 client = Vonage(
     Auth(
         application_id=VONAGE_APPLICATION_ID,
         private_key=VONAGE_PRIVATE_KEY,
-    ),
-    http_client_options=HttpClientOptions(api_host='messages-sandbox.nexmo.com'),
+    )
 )
 
 message = MessengerFile(

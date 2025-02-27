@@ -1,5 +1,6 @@
 import os
 from os.path import join, dirname
+from re import M
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), "../../.env")
@@ -10,8 +11,7 @@ VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
 MESSAGES_TO_NUMBER = os.environ.get("MESSAGES_TO_NUMBER")
 WHATSAPP_SENDER_ID = os.environ.get("WHATSAPP_SENDER_ID")
 WHATSAPP_TEMPLATE_NAME = os.environ.get("WHATSAPP_TEMPLATE_NAME")
-IMAGE_URL = os.environ.get("IMAGE_URL")
-WHATSAPP_TEMPLATE_REPLACEMENT_TEXT = os.environ.get("WHATSAPP_TEMPLATE_REPLACEMENT_TEXT")
+MESSAGES_IMAGE_URL = os.environ.get("MESSAGES_IMAGE_URL")
 
 from vonage import Auth, Vonage
 from vonage_messages import WhatsappCustom
@@ -38,7 +38,7 @@ message = WhatsappCustom(
                         {
                             "type": "image",
                             "image": {
-                                "link": IMAGE_URL,
+                                "link": MESSAGES_IMAGE_URL,
                             },
                         },
                     ],
@@ -46,7 +46,8 @@ message = WhatsappCustom(
                 {
                     "type": "body",
                     "parameters": [
-                        {"type": "text", "text": WHATSAPP_TEMPLATE_REPLACEMENT_TEXT}
+                        {"type": "text", "text": "Joe Bloggs"},
+                        {"type": "text", "text": "AB123456"},
                     ],
                 },
             ],
