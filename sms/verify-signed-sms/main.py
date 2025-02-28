@@ -9,23 +9,16 @@ load_dotenv(envpath)
 
 VONAGE_API_KEY = os.getenv("VONAGE_API_KEY")
 VONAGE_SIGNATURE_SECRET = os.getenv("VONAGE_SIGNATURE_SECRET")
-VONAGE_SIGNATURE_SECRET_METHOD = os.getenv("VONAGE_SIGNATURE_SECRET_METHOD")
 
 from fastapi import FastAPI, Request
 from vonage import Auth, Vonage
 
-client = Vonage(
-    Auth(
-        api_key=VONAGE_API_KEY,
-        signature_secret=VONAGE_SIGNATURE_SECRET,
-        signature_method=VONAGE_SIGNATURE_SECRET_METHOD,
-    )
-)
+client = Vonage(Auth(api_key=VONAGE_API_KEY, signature_secret=VONAGE_SIGNATURE_SECRET))
 
 app = FastAPI()
 
 
-@app.get('/')
+@app.post('/')
 async def verify_signed_webhook(request: Request):
     data = await request.json()
 
