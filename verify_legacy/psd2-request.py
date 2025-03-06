@@ -7,16 +7,16 @@ load_dotenv(dotenv_path)
 
 VONAGE_API_KEY = os.getenv("VONAGE_API_KEY")
 VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
-TO_NUMBER = os.getenv("TO_NUMBER")
-PAYEE = os.environ.get("PAYEE")
-AMOUNT = os.environ.get("AMOUNT")
+VERIFY_NUMBER = os.getenv("VERIFY_NUMBER")
+VERIFY_PAYEE_NAME = os.environ.get("VERIFY_PAYEE_NAME")
+VERIFY_AMOUNT = os.environ.get("VERIFY_AMOUNT")
 
 from vonage import Auth, Vonage
 from vonage_verify_legacy import StartVerificationResponse, Psd2Request
 
 client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
 
-request = Psd2Request(number=TO_NUMBER, payee=PAYEE, amount=AMOUNT)
+request = Psd2Request(number=VERIFY_NUMBER, payee=VERIFY_PAYEE_NAME, amount=VERIFY_AMOUNT)
 
 response: StartVerificationResponse = client.verify_legacy.start_psd2_verification(
     request

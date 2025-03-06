@@ -8,9 +8,9 @@ load_dotenv(envpath)
 
 VONAGE_APPLICATION_ID = os.getenv('VONAGE_APPLICATION_ID')
 VONAGE_PRIVATE_KEY = os.getenv('VONAGE_PRIVATE_KEY')
-USER_NEW_NAME = os.getenv('USER_NEW_NAME')
-USER_NEW_DISPLAY_NAME = os.getenv('USER_NEW_DISPLAY_NAME')
 USER_ID = os.getenv('USER_ID')
+USER_NAME = os.getenv('USER_NAME')
+USER_DISPLAY_NAME = os.getenv('USER_DISPLAY_NAME')
 
 from vonage import Auth, Vonage
 from vonage_users import Channels, PstnChannel, SmsChannel, User
@@ -23,8 +23,8 @@ client = Vonage(
 )
 
 user_params = User(
-    name=USER_NEW_NAME,
-    display_name=USER_NEW_DISPLAY_NAME,
+    name=USER_NAME,
+    display_name=USER_DISPLAY_NAME,
     channels=Channels(
         sms=[SmsChannel(number='1234567890')], pstn=[PstnChannel(number=123456)]
     ),

@@ -7,14 +7,14 @@ load_dotenv(dotenv_path)
 
 VONAGE_API_KEY = os.getenv("VONAGE_API_KEY")
 VONAGE_API_SECRET = os.getenv("VONAGE_API_SECRET")
-TO_NUMBER = os.getenv("TO_NUMBER")
+VERIFY_NUMBER = os.getenv("VERIFY_NUMBER")
 
 from vonage import Auth, Vonage
 from vonage_verify_legacy import StartVerificationResponse, VerifyRequest
 
 client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
 
-request = VerifyRequest(number=TO_NUMBER, brand='AcmeInc')
+request = VerifyRequest(number=VERIFY_NUMBER, brand='AcmeInc')
 
 response: StartVerificationResponse = client.verify_legacy.start_verification(request)
 print(response)

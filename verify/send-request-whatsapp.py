@@ -9,9 +9,9 @@ load_dotenv(dotenv_path)
 VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
 
-BRAND_NAME = os.environ.get("BRAND_NAME")
-TO_NUMBER = os.environ.get("TO_NUMBER")
-WHATSAPP_BUSINESS_NUMBER = os.environ.get("WHATSAPP_BUSINESS_NUMBER")
+VERIFY_BRAND_NAME = os.environ.get("VERIFY_BRAND_NAME")
+VERIFY_NUMBER = os.environ.get("VERIFY_NUMBER")
+VERIFY_FROM_NUMBER = os.environ.get("VERIFY_FROM_NUMBER")
 
 from vonage import Auth, Vonage
 from vonage_verify import StartVerificationResponse, VerifyRequest, WhatsappChannel
@@ -24,9 +24,9 @@ client = Vonage(
 )
 
 verify_request = VerifyRequest(
-    brand=BRAND_NAME,
+    brand=VERIFY_BRAND_NAME,
     workflow=[
-        WhatsappChannel(to=TO_NUMBER, from_=WHATSAPP_BUSINESS_NUMBER),
+        WhatsappChannel(to=VERIFY_NUMBER, from_=VERIFY_FROM_NUMBER),
     ],
 )
 

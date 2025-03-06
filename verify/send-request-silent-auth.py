@@ -9,8 +9,8 @@ load_dotenv(dotenv_path)
 VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
 
-BRAND_NAME = os.environ.get("BRAND_NAME")
-TO_NUMBER = os.environ.get("TO_NUMBER")
+VERIFY_BRAND_NAME = os.environ.get("VERIFY_BRAND_NAME")
+VERIFY_NUMBER = os.environ.get("VERIFY_NUMBER")
 
 from vonage import Auth, Vonage
 from vonage_verify import SilentAuthChannel, StartVerificationResponse, VerifyRequest
@@ -23,8 +23,8 @@ client = Vonage(
 )
 
 verify_request = VerifyRequest(
-    brand=BRAND_NAME,
-    workflow=[SilentAuthChannel(to=TO_NUMBER)],
+    brand=VERIFY_BRAND_NAME,
+    workflow=[SilentAuthChannel(to=VERIFY_NUMBER)],
 )
 
 response: StartVerificationResponse = client.verify.start_verification(verify_request)
