@@ -9,7 +9,7 @@ load_dotenv(dotenv_path)
 VONAGE_APPLICATION_ID = os.environ.get('VONAGE_APPLICATION_ID')
 VONAGE_PRIVATE_KEY = os.environ.get('VONAGE_PRIVATE_KEY')
 
-CALL_UUID = os.environ.get('CALL_UUID')
+VOICE_CALL_ID = os.environ.get('VOICE_CALL_ID')
 LANGUAGE = os.environ.get('LANGUAGE')
 
 from vonage import Auth, Vonage
@@ -24,7 +24,7 @@ client = Vonage(
 )
 
 response: CallMessage = client.voice.play_tts_into_call(
-    uuid=CALL_UUID,
+    uuid=VOICE_CALL_ID,
     tts_options=TtsStreamOptions(text='Hello from Vonage.', language=LANGUAGE),
 )
 

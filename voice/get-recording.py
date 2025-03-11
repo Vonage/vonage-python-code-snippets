@@ -7,8 +7,7 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get('VONAGE_APPLICATION_ID')
 VONAGE_PRIVATE_KEY = os.environ.get('VONAGE_PRIVATE_KEY')
-
-RECORDING_URL = os.environ.get('RECORDING_URL')
+VOICE_RECORDING_URL = os.environ.get('VOICE_RECORDING_URL')
 
 from vonage import Auth, Vonage
 
@@ -19,4 +18,4 @@ client = Vonage(
     )
 )
 
-client.voice.download_recording(RECORDING_URL, 'recording.mp3')
+client.voice.download_recording(VOICE_RECORDING_URL, 'recording.mp3')

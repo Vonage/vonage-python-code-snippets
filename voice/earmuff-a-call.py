@@ -8,8 +8,8 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get('VONAGE_APPLICATION_ID')
 VONAGE_PRIVATE_KEY = os.environ.get('VONAGE_PRIVATE_KEY')
+VOICE_CALL_ID = os.environ.get('VOICE_CALL_ID')
 
-CALL_UUID = os.environ.get('CALL_UUID')
 
 from vonage import Auth, Vonage
 
@@ -20,6 +20,6 @@ client = Vonage(
     )
 )
 
-client.voice.earmuff(CALL_UUID)
-sleep(5)
-client.voice.unearmuff(CALL_UUID)
+client.voice.earmuff(VOICE_CALL_ID)
+sleep(3)
+client.voice.unearmuff(VOICE_CALL_ID)

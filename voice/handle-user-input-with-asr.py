@@ -7,7 +7,7 @@ from vonage_voice import Input, NccoAction, Speech, Talk
 dotenv_path = join(dirname(__file__), '../.env')
 load_dotenv(dotenv_path)
 
-VONAGE_NUMBER = os.environ.get('VONAGE_NUMBER')
+VONAGE_VIRTUAL_NUMBER = os.environ.get('VONAGE_VIRTUAL_NUMBER')
 RECIPIENT_NUMBER = os.environ.get('RECIPIENT_NUMBER')
 
 app = FastAPI()
