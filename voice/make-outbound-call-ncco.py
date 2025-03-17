@@ -1,6 +1,7 @@
-from pprint import pprint
 import os
-from os.path import join, dirname
+from os.path import dirname, join
+from pprint import pprint
+
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), '../.env')
@@ -13,7 +14,6 @@ VONAGE_VIRTUAL_NUMBER = os.environ.get('VONAGE_VIRTUAL_NUMBER')
 
 from vonage import Auth, Vonage
 from vonage_voice import CreateCallRequest, Phone, Talk, ToPhone
-
 
 client = Vonage(
     Auth(

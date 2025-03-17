@@ -1,5 +1,6 @@
 from pprint import pprint
-from fastapi import FastAPI, Body, Request
+
+from fastapi import Body, FastAPI, Request
 from vonage_voice import Dtmf, Input, NccoAction, Talk
 
 app = FastAPI()

@@ -1,6 +1,7 @@
-from pprint import pprint
 import os
-from os.path import join, dirname
+from os.path import dirname, join
+from pprint import pprint
+
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), "../.env")

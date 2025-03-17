@@ -1,6 +1,7 @@
 import os
-from os.path import join, dirname
+from os.path import dirname, join
 from re import M
+
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), "../../.env")

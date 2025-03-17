@@ -1,5 +1,6 @@
-from fastapi import FastAPI, Request
 from pprint import pprint
+
+from fastapi import FastAPI, Request
 
 app = FastAPI()
 

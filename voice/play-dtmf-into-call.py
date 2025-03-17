@@ -1,6 +1,7 @@
 import os
-from os.path import join, dirname
+from os.path import dirname, join
 from pprint import pprint
+
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), '../.env')
@@ -13,7 +14,6 @@ VOICE_DTMF_DIGITS = os.environ.get('VOICE_DTMF_DIGITS')
 
 from vonage import Auth, Vonage
 from vonage_voice import CallMessage
-
 
 client = Vonage(
     Auth(

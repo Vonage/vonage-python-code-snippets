@@ -1,6 +1,7 @@
 import os
-from os.path import join, dirname
+from os.path import dirname, join
 from pprint import pprint
+
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), '../.env')
@@ -13,7 +14,6 @@ VOICE_STREAM_URL = os.environ.get('VOICE_STREAM_URL')
 
 from vonage import Auth, Vonage
 from vonage_voice import AudioStreamOptions, CallMessage
-
 
 client = Vonage(
     Auth(

@@ -1,6 +1,7 @@
 import os
-from os.path import join, dirname
+from os.path import dirname, join
 from pprint import pprint
+
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), "../.env")
@@ -13,7 +14,8 @@ VERIFY_VERIFY_BRAND_NAME = os.environ.get("VERIFY_VERIFY_BRAND_NAME")
 VERIFY_TO_EMAIL = os.environ.get("VERIFY_TO_EMAIL")
 
 from vonage import Auth, Vonage
-from vonage_verify import EmailChannel, StartVerificationResponse, VerifyRequest
+from vonage_verify import (EmailChannel, StartVerificationResponse,
+                           VerifyRequest)
 
 client = Vonage(
     Auth(

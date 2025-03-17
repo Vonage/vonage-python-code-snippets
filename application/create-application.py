@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
-from os.path import join, dirname
+from os.path import dirname, join
+
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), "../.env")
@@ -10,20 +11,10 @@ VONAGE_API_KEY = os.getenv('VONAGE_API_KEY')
 VONAGE_API_SECRET = os.getenv('VONAGE_API_SECRET')
 
 from vonage import Auth, Vonage
-from vonage_application import (
-    ApplicationConfig,
-    ApplicationData,
-    ApplicationUrl,
-    Capabilities,
-    Messages,
-    MessagesWebhooks,
-    Region,
-    Verify,
-    VerifyWebhooks,
-    Voice,
-    VoiceUrl,
-    VoiceWebhooks,
-)
+from vonage_application import (ApplicationConfig, ApplicationData,
+                                ApplicationUrl, Capabilities, Messages,
+                                MessagesWebhooks, Region, Verify,
+                                VerifyWebhooks, Voice, VoiceUrl, VoiceWebhooks)
 
 client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
 

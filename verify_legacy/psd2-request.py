@@ -1,5 +1,6 @@
 import os
-from os.path import join, dirname
+from os.path import dirname, join
+
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), "../.env")
@@ -12,7 +13,7 @@ VERIFY_PAYEE_NAME = os.environ.get("VERIFY_PAYEE_NAME")
 VERIFY_AMOUNT = os.environ.get("VERIFY_AMOUNT")
 
 from vonage import Auth, Vonage
-from vonage_verify_legacy import StartVerificationResponse, Psd2Request
+from vonage_verify_legacy import Psd2Request, StartVerificationResponse
 
 client = Vonage(Auth(api_key=VONAGE_API_KEY, api_secret=VONAGE_API_SECRET))
 

@@ -1,8 +1,9 @@
 import os
-from os.path import join, dirname
-from dotenv import load_dotenv
-from fastapi import FastAPI, Body
+from os.path import dirname, join
 from pprint import pprint
+
+from dotenv import load_dotenv
+from fastapi import Body, FastAPI
 from vonage_voice import Conversation
 
 dotenv_path = join(dirname(__file__), '../.env')

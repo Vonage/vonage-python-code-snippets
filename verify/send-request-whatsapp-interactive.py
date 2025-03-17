@@ -1,6 +1,7 @@
 import os
-from os.path import join, dirname
+from os.path import dirname, join
 from pprint import pprint
+
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), "../.env")
@@ -14,7 +15,8 @@ VERIFY_NUMBER = os.environ.get("VERIFY_NUMBER")
 VERIFY_FROM_NUMBER = os.environ.get("VERIFY_FROM_NUMBER")
 
 from vonage import Auth, Vonage
-from vonage_verify import StartVerificationResponse, VerifyRequest, WhatsappChannel
+from vonage_verify import (StartVerificationResponse, VerifyRequest,
+                           WhatsappChannel)
 
 client = Vonage(
     Auth(

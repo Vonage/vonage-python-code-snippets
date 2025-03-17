@@ -1,5 +1,6 @@
 import os
-from os.path import join, dirname
+from os.path import dirname, join
+
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), "../../.env")
@@ -12,11 +13,8 @@ WHATSAPP_SENDER_ID = os.environ.get("WHATSAPP_SENDER_ID")
 WHATSAPP_TEMPLATE_NAME = os.environ.get("WHATSAPP_TEMPLATE_NAME")
 
 from vonage import Auth, Vonage
-from vonage_messages import (
-    WhatsappTemplate,
-    WhatsappTemplateResource,
-    WhatsappTemplateSettings,
-)
+from vonage_messages import (WhatsappTemplate, WhatsappTemplateResource,
+                             WhatsappTemplateSettings)
 
 client = Vonage(
     Auth(

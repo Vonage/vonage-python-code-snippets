@@ -1,6 +1,7 @@
 import os
-from os.path import join, dirname
+from os.path import dirname, join
 from pprint import pprint
+
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), '../.env')
@@ -14,7 +15,6 @@ VOICE_LANGUAGE = os.environ.get('VOICE_LANGUAGE')
 
 from vonage import Auth, Vonage
 from vonage_voice import CallMessage, TtsStreamOptions
-
 
 client = Vonage(
     Auth(
