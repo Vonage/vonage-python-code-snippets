@@ -3,13 +3,13 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 from fastapi import FastAPI, Body
 from pprint import pprint
-from vonage_voice import Connect, NccoAction, PhoneEndpoint, Record, Talk
+from vonage_voice import Connect, NccoAction, PhoneEndpoint, Record
 
 dotenv_path = join(dirname(__file__), '../.env')
 load_dotenv(dotenv_path)
 
 VONAGE_VIRTUAL_NUMBER = os.environ.get('VONAGE_VIRTUAL_NUMBER')
-RECIPIENT_NUMBER = os.environ.get('RECIPIENT_NUMBER')
+VOICE_TO_NUMBER = os.environ.get('VOICE_TO_NUMBER')
 
 app = FastAPI()
 
@@ -17,18 +17,13 @@ app = FastAPI()
 @app.get('/webhooks/answer')
 async def inbound_call():
     ncco: list[NccoAction] = [
-        Talk(
-            text=f'Hi, we will shortly forward your call. This call is recorded for quality assurance purposes.'
-        ),
         Record(
             split='conversation',
             channels=2,
             eventUrl=['https://demo.ngrok.io/webhooks/recordings'],
         ),
         Connect(
-            endpoint=[PhoneEndpoint(number=RECIPIENT_NUMBER)],
-            from_=VONAGE_VIRTUAL_NUMBER,
-            eventUrl=['https://demo.ngrok.io/webhooks/event'],
+            from_=VONAGE_VIRTUAL_NUMBER, endpoint=[PhoneEndpoint(number=VOICE_TO_NUMBER)]
         ),
     ]
 

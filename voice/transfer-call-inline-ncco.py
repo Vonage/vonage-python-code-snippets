@@ -7,7 +7,7 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
-UUID = os.environ.get("UUID")
+VOICE_CALL_ID = os.environ.get("VOICE_CALL_ID")
 
 from vonage import Auth, Vonage
 from vonage_voice import Talk
@@ -19,6 +19,6 @@ client = Vonage(
     )
 )
 
-ncco = [Talk(text='Your call has been transferred to a new NCCO.')]
+ncco = [Talk(text='This is a transfer action using an inline NCCO')]
 
-client.voice.transfer_call_ncco(UUID, ncco)
+client.voice.transfer_call_ncco(VOICE_CALL_ID, ncco)

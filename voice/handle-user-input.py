@@ -1,14 +1,6 @@
-import os
-from os.path import join, dirname
-from dotenv import load_dotenv
+from pprint import pprint
 from fastapi import FastAPI, Body, Request
-from vonage_voice import Input, NccoAction, Talk
-
-dotenv_path = join(dirname(__file__), '../.env')
-load_dotenv(dotenv_path)
-
-VONAGE_VIRTUAL_NUMBER = os.environ.get('VONAGE_VIRTUAL_NUMBER')
-RECIPIENT_NUMBER = os.environ.get('RECIPIENT_NUMBER')
+from vonage_voice import Dtmf, Input, NccoAction, Talk
 
 app = FastAPI()
 
@@ -16,11 +8,11 @@ app = FastAPI()
 @app.get('/webhooks/answer')
 async def answer_call(request: Request):
     ncco: list[NccoAction] = [
-        Talk(text=f'Please enter a digit.'),
+        Talk(text=f'Hello, please press any key to continue.'),
         Input(
             type=['dtmf'],
-            maxDigits=1,
-            eventUrl=[str(request.base_url) + '/webhooks/dtmf'],
+            dtmf=Dtmf(timeOut=5, maxDigits=1),
+            eventUrl=[str(request.base_url) + 'webhooks/dtmf'],
         ),
     ]
 
@@ -29,8 +21,9 @@ async def answer_call(request: Request):
 
 @app.post('/webhooks/dtmf')
 async def answer_dtmf(data: dict = Body(...)):
+    pprint(data)
     return [
-        Talk(text=f'Hello, you pressed {data['dtmf']}').model_dump(
+        Talk(text=f'Hello, you pressed {data['dtmf']['digits']}').model_dump(
             by_alias=True, exclude_none=True
         )
     ]

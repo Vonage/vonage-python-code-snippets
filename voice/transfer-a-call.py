@@ -7,7 +7,8 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
-UUID = os.environ.get("UUID")
+VOICE_CALL_ID = os.environ.get("VOICE_CALL_ID")
+VOICE_NCCO_URL = os.environ.get("VOICE_NCCO_URL")
 
 from vonage import Auth, Vonage
 
@@ -18,7 +19,4 @@ client = Vonage(
     )
 )
 
-client.voice.transfer_call_answer_url(
-    UUID,
-    'https://raw.githubusercontent.com/nexmo-community/ncco-examples/gh-pages/text-to-speech.json',
-)
+client.voice.transfer_call_answer_url(VOICE_CALL_ID, VOICE_NCCO_URL)

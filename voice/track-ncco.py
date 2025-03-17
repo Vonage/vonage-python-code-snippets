@@ -1,14 +1,5 @@
-import os
-from os.path import join, dirname
-from dotenv import load_dotenv
-from fastapi import FastAPI, Body, Request
+from fastapi import FastAPI, Request
 from vonage_voice import NccoAction, Notify, Talk
-
-dotenv_path = join(dirname(__file__), '../.env')
-load_dotenv(dotenv_path)
-
-VONAGE_VIRTUAL_NUMBER = os.environ.get('VONAGE_VIRTUAL_NUMBER')
-RECIPIENT_NUMBER = os.environ.get('RECIPIENT_NUMBER')
 
 app = FastAPI()
 
@@ -19,7 +10,7 @@ async def inbound_call(request: Request):
         Talk(text=f'Thanks for calling the notification line.'),
         Notify(
             payload={"foo": "bar"},
-            eventUrl=[str(request.base_url) + '/webhooks/notification'],
+            eventUrl=[str(request.base_url) + 'webhooks/notification'],
         ),
         Talk(text=f'You will never hear me as the notification URL will return an NCCO.'),
     ]

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from pprint import pprint
 import os
 from os.path import join, dirname
@@ -25,7 +24,7 @@ client = Vonage(
 
 response = client.voice.create_call(
     CreateCallRequest(
-        ncco=[Talk(text='Hello world, this is a test call.', loop=10)],
+        ncco=[Talk(text='This is a text to speech call from Vonage.')],
         to=[ToPhone(number=VOICE_TO_NUMBER)],
         from_=Phone(number=VONAGE_VIRTUAL_NUMBER),
     )

@@ -20,13 +20,13 @@ client = Vonage(
     )
 )
 
-
-NOW = datetime.now(timezone.utc)
-DATE_END = NOW.replace(microsecond=0).isoformat()
-DATE_START = (NOW - timedelta(hours=24, minutes=00)).replace(microsecond=0).isoformat()
+now = datetime.now(timezone.utc)
+date_end = now.strftime('%Y-%m-%dT%H:%M:%SZ')
+start = now - timedelta(hours=24)
+date_start = start.strftime('%Y-%m-%dT%H:%M:%SZ')
 
 calls, _ = client.voice.list_calls(
-    ListCallsFilter(date_start=DATE_START, date_end=DATE_END)
+    ListCallsFilter(date_start=date_start, date_end=date_end)
 )
 
 for call in calls:
