@@ -3,7 +3,6 @@ from os.path import dirname, join
 
 from dotenv import load_dotenv
 
-
 envpath = join(dirname(__file__), '../.env')
 load_dotenv(envpath)
 
