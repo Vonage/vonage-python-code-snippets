@@ -20,10 +20,10 @@ vonage_client = Vonage(
 )
 
 options = SipOptions(
-    uri=f'sip:447405192752@sip.nexmo.com;transport=tls',
-    from_=f'442039051298@nexmo.com',
+    uri=f'sip:...@sip.nexmo.com;transport=tls',
+    from_=f'...@nexmo.com',
     headers={'header_key': 'header_value'},
-    auth=SipAuth(username='adf31819', password='ectHFYYRYHRHF9w48eaghrs'),
+    auth=SipAuth(username='...', password='...'),
     secure=False,
     video=False,
     observe_force_mute=True,
