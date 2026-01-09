@@ -12,11 +12,9 @@ VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
 
 VERIFY_BRAND_NAME = os.environ.get("VERIFY_BRAND_NAME")
 VERIFY_NUMBER = os.environ.get("VERIFY_NUMBER")
-VERIFY_TO_EMAIL = os.environ.get("VERIFY_TO_EMAIL")
-VERIFY_FROM_EMAIL = os.environ.get("VERIFY_FROM_EMAIL")
 
 from vonage import Auth, Vonage
-from vonage_verify import (EmailChannel, SilentAuthChannel,
+from vonage_verify import (SmsChannel, VoiceChannel, SilentAuthChannel,
                            StartVerificationResponse, VerifyRequest)
 
 client = Vonage(
@@ -30,7 +28,8 @@ verify_request = VerifyRequest(
     brand=VERIFY_BRAND_NAME,
     workflow=[
         SilentAuthChannel(to=VERIFY_NUMBER),
-        EmailChannel(to=VERIFY_TO_EMAIL, from_=VERIFY_FROM_EMAIL),
+        SmsChannel(to=VERIFY_NUMBER),
+        VoiceChannel(to=VERIFY_NUMBER),
     ],
 )
 
