@@ -10,7 +10,7 @@ load_dotenv(dotenv_path)
 VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
 INSIGHT_NUMBER = os.environ.get("INSIGHT_NUMBER")
-IDENTITY_INSIGHTS_PURPOSE = os.environ.get("IDENTITY_INSIGHTS_PURPOSE")
+SIM_SWAP_PERIOD = os.environ.get("SIM_SWAP_PERIOD")
 IDENTITY_INSIGHTS_API_HOST = os.environ.get("IDENTITY_INSIGHTS_API_HOST")
 
 from vonage import Auth, HttpClientOptions, Vonage
@@ -31,8 +31,8 @@ client = Vonage(
 
 request = IdentityInsightsRequest(
     phone_number=INSIGHT_NUMBER,
-    purpose=IDENTITY_INSIGHTS_PURPOSE,
-    insights=InsightsRequest(sim_swap=SimSwapInsight(period=240)),
+    purpose='FraudPreventionAndDetection',
+    insights=InsightsRequest(sim_swap=SimSwapInsight(period=SIM_SWAP_PERIOD)),
 )
 
 response: IdentityInsightsResponse = client.identity_insights.requests(request)
