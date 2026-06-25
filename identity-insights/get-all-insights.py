@@ -9,7 +9,7 @@ load_dotenv(dotenv_path)
 
 VONAGE_APPLICATION_ID = os.environ.get("VONAGE_APPLICATION_ID")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY")
-IDENTITY_INSIGHTS_NUMBER = os.environ.get("IDENTITY_INSIGHTS_NUMBER")
+INSIGHT_NUMBER = os.environ.get("INSIGHT_NUMBER")
 IDENTITY_INSIGHTS_PURPOSE = os.environ.get("IDENTITY_INSIGHTS_PURPOSE")
 IDENTITY_INSIGHTS_API_HOST = os.environ.get("IDENTITY_INSIGHTS_API_HOST")
 
@@ -31,7 +31,7 @@ client = Vonage(
 )
 
 request = IdentityInsightsRequest(
-    phone_number=IDENTITY_INSIGHTS_NUMBER,
+    phone_number=INSIGHT_NUMBER,
     purpose=IDENTITY_INSIGHTS_PURPOSE,
     insights=InsightsRequest(
         format=EmptyInsight(),
